@@ -1,11 +1,58 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     text-align: center;
     background-color: #f5f5f5;
 }
 
-header {
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0077cc;
+    padding: 15px;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
     background-color: #0077cc;
     color: white;
-    padding: 20px;
+    padding: 50px 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    color: #0077cc;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Sections */
+section {
+    padding: 50px 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
 }
