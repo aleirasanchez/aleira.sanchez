@@ -3,12 +3,12 @@ function scrollToSection(id) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Check if the URL has the #projects hash and show the section if needed
-    if (window.location.hash === "#projects") {
-        document.getElementById("projects").style.display = "block";
+    // Redirect to the About section when loading the page
+    if (!window.location.hash) {
+        window.location.hash = "#about";
     }
 
-    // Add event listeners to navigation links
+    // Ensure the correct section is displayed
     document.querySelectorAll("nav a").forEach(link => {
         link.addEventListener("click", function (event) {
             let targetId = this.getAttribute("href").substring(1);
