@@ -30,7 +30,7 @@ nav a {
 
 /* Hero Section */
 .hero {
-    background-color: #0077cc;
+    background-color: #005C53;
     color: white;
     padding: 50px 20px;
 }
@@ -57,11 +57,27 @@ footer {
     margin-top: 20px;
 }
 
+.hero {
+    display: flex;
+    justify-content: center; /* Centers everything in the section */
+    align-items: center;
+    text-align: left;
+    padding: 50px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    max-width: 900px; /* Adjust width */
+}
+
 .profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #0077cc;
-    margin-top: 10px;
+    width: 200px; /* Adjust size */
+    height: auto;
+    border-radius: 50%; /* Makes the image circular */
+    margin-right: 20px; /* Space between image and text */
+}
+
+.text-content {
+    max-width: 600px; /* Prevents text from being too wide */
 }
