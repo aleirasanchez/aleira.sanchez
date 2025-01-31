@@ -59,8 +59,10 @@ nav a {
 }
 
 .email {
-    font-weight: bold;
-    color: #005C53; /* Matches the border */
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #005C53; /* Matching the theme */
+}
 }
 
 #projects {
