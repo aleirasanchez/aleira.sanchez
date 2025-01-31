@@ -58,11 +58,20 @@ nav a {
     max-width: 600px; /* Prevents text from being too wide */
 }
 
-.email {
-    font-size: 1.2rem;
-    font-weight: normal;
-    color: #005C53; /* Matching the theme */
+.hero-content h1 {
+    font-size: 2.5em; /* Make your name larger */
+    color: #005C53; /* Set the color to match the email */
 }
+
+.hero-content .email {
+    font-size: 1.2em;
+    font-weight: normal;
+    color: #005C53; /* Ensure it matches the name */
+}
+
+.hero-content p {
+    font-size: 1em;
+    color: black; /* Make the bio text black */
 }
 
 #projects {
