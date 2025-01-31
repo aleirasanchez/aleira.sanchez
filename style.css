@@ -4,14 +4,14 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #005C53; /* #005C53 , f5f5f5*/
+    background-color: #005C53; /* #005C53 , f5f5f5, 0077cc*/
 }
 
 /* Navigation Bar */
 nav {
     display: flex;
     justify-content: space-between;
-    background-color: #0077cc;
+    background-color: #005C53;
     padding: 15px;
     color: white;
 }
