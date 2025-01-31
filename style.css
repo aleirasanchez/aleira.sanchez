@@ -34,15 +34,16 @@ nav a {
     color: white;
     padding: 50px 20px;
     display: flex;
-    justify-content: center; /* Centers everything in the section */
-    align-items: center;
-    text-align: center;
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center;    /* Centers the content vertically */
 }
 
 .about-content {
     display: flex;
     align-items: center;
+    justify-content: center;  /* Centers content horizontally */
     max-width: 900px; /* Adjust width */
+    text-align: left;  /* Aligns the text to the left */
 }
 
 .profile-img {
@@ -51,7 +52,6 @@ nav a {
     border-radius: 50%; /* Circular image */
     border: 5px solid #005C53; /* Outline */
     margin-right: 20px;
-    align-items: center;
 }
 
 .text-content {
@@ -83,10 +83,10 @@ section {
     padding: 50px 20px;
 }
 
-/* Footer */
+/* /* Footer */
 footer {
     background-color: #333;
     color: white;
     padding: 10px;
     margin-top: 20px;
-}
+} */
