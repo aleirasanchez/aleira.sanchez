@@ -47,7 +47,7 @@ nav a {
 
 .profile-img {
     width: 250px; /* Adjust size */
-    height: 250px;
+    height: auto;
     border-radius: 50%; /* Circular image */
     border: 5px solid #005C53; /* Outline */
     margin-right: 20px;
