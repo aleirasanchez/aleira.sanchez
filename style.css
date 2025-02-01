@@ -55,7 +55,7 @@ nav a {
     width: 250px;
     height: auto;
     border-radius: 50%;
-    border: 5px solid #DBF227;
+    border: 5px solid #005C53;
     margin-right: 20px;
 }
 
@@ -124,7 +124,7 @@ nav a {
 /* Footer */
 footer {
     background-color: ##f5f5f5; 
-    color: #005C53;
+    color: #042940;
     padding: 10px;
     margin-top: 20px;
 }
