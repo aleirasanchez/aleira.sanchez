@@ -151,7 +151,7 @@ p {
     line-height: 1.6;
 }
 
-/* Navigation bar specific for the lab page */
+/* /* Navigation bar specific for the lab page */
 nav {
     background-color: #333;
     padding: 10px;
@@ -165,4 +165,4 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
-}
+} */
