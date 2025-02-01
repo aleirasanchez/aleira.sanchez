@@ -3,80 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>Aleira Sanchez | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <nav>
-<!--             <h1>Aleira N. Sanchez</h1> -->
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#labs">Labs</a></li>
-<!--                 <li><a href="#contact">Contact</a></li> -->
-            </ul>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">Aleira Sanchez</h1>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#labs">Labs</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-<!--     <section class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <img src="about.jpg" alt="My Profile Picture" class="profile-img">
-            <div class="text-content">
-                <h1>Aleira N. Sanchez</h1>
-                <h3 class="email">MAE 5190: Fast Robots | ans222@cornell.edu</h3>
-                <p>Hello! I am a Senior and Early M.Eng student in the MAE department with a concentration in Robotics. I am interested in autonomous systems and aeronautics and I am very excited to take this class. A little fun fact about me is that I am born and raised in Puerto Rico and my first language is Spanish. I am always looking for more Hispanic friends!</p>
-<!--                 <button onclick="scrollToSection('about')">Learn More</button>
-            </div>
+            <h1>Aleira N. Sanchez</h1>
+            <p>Senior & Early M.Eng Student | Robotics & Autonomous Systems</p>
+            <a href="#about" class="btn">Learn More</a>
         </div>
-    </section> -->
+    </section>
 
-    <section id="about">
-<!--     <h2>About</h2> -->
-        <div class="about-content">
-            <img src="about.jpg" alt="My Profile Picture" class="profile-img">
-            <div class="text-content">
-                <h1>Aleira N. Sanchez</h1>
-                <h3 class="email">MAE 5190: Fast Robots | ans222@cornell.edu</h3>
-                <p>Hello! I am a Senior and Early M.Eng student in the MAE department with a concentration in Robotics. I am interested in autonomous systems and aeronautics and I am very excited to take this class. A little fun fact about me is that I am born and raised in Puerto Rico and my first language is Spanish. I am always looking for more Hispanic friends!</p>
+    <section id="about" class="about">
+        <div class="container">
+            <img src="about.jpg" alt="Aleira Sanchez" class="profile-img">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Hello! I am a Senior and Early M.Eng student in the MAE department with a concentration in Robotics. I am interested in autonomous systems and aeronautics. A little fun fact about me is that I was born and raised in Puerto Rico, and my first language is Spanish.</p>
             </div>
         </div>
     </section>
 
-    <section id="labs">
-<!--     <h2>My Labs</h2> -->
-    <div class="gallery">
-        <div class="lab">
-            <img src="lab1A.jpg" alt="Lab 1A">
-            <h2>Lab 1A: Artemis</h2>
-<!--             <p>A cool project about XYZ.</p> -->
-            <a href="https://github.com/aleirasanchez/Lab1A" target="_blank">View Lab</a>
+    <section id="labs" class="labs">
+        <div class="container">
+            <h2>My Labs</h2>
+            <div class="lab-gallery">
+                <div class="lab">
+                    <img src="lab1A.jpg" alt="Lab 1A">
+                    <h3>Lab 1A: Artemis</h3>
+                    <a href="https://github.com/aleirasanchez/Lab1A" target="_blank" class="btn">View Lab</a>
+                </div>
+                <div class="lab">
+                    <img src="lab1B.jpg" alt="Lab 1B">
+                    <h3>Lab 1B: Bluetooth</h3>
+                    <a href="https://github.com/aleirasanchez/Lab1B" target="_blank" class="btn">View Lab</a>
+                </div>
+                <div class="lab">
+                    <img src="lab2.jpg" alt="Lab 2">
+                    <h3>Lab 2</h3>
+                    <a href="https://github.com/aleirasanchez/Lab2" target="_blank" class="btn">View Lab</a>
+                </div>
+            </div>
         </div>
-
-        <div class="lab">
-            <img src="lab1B.jpg" alt="Lab 1B">
-            <h2>Lab 1B: Bluetooth</h2>
-<!--             <p>Another interesting project.</p> -->
-            <a href="https://github.com/aleirasanchez/Lab1B" target="_blank">View Lab</a>
-        </div>
-
-        <div class="lab">
-            <img src="lab2.jpg" alt="Lab 2">
-            <h2>Lab 2</h2>
-<!--             <p>A project that I really enjoyed.</p> -->
-            <a href="https://github.com/aleirasanchez/Lab2" target="_blank">View Lab</a>
-        </div>
-    </div>
     </section>
 
-
-<!--     <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: your-email@example.com</p>
-    </section> -->
-
-<!--     <footer>
-        <p>© 2024 My Website</p>
-    </footer> -->
+    <footer>
+        <div class="container">
+            <p>© 2024 Aleira Sanchez | <a href="mailto:ans222@cornell.edu">Contact Me</a></p>
+        </div>
+    </footer>
 </body>
 </html>
