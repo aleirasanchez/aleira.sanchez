@@ -133,8 +133,8 @@ html {
     scroll-behavior: smooth;
 }
 
-/* /* General styling for labs page */
-#lab1a, #lab1b, #lab2 {
+ /* General styling for labs page */
+/* #lab1a, #lab1b, #lab2 {
     padding: 20px;
     margin-bottom: 30px;
     background-color: #f4f4f4;
@@ -149,10 +149,10 @@ h2 {
 p {
     font-size: 1.2em;
     line-height: 1.6;
-}
+} */
 
-/* /* Navigation bar specific for the lab page */
-nav {
+ /* Navigation bar specific for the lab page */
+/* nav {
     background-color: #333;
     padding: 10px;
 }
@@ -161,9 +161,10 @@ nav a {
     color: white;
     text-decoration: none;
     margin-right: 20px;
-} */
+} 
 
 nav a:hover {
     text-decoration: underline;
 }
+ 
  */
