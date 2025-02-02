@@ -110,11 +110,6 @@ nav a {
     text-align: center;
 }
 
-.lab img {
-    max-width: 100%;
-    border-radius: 5px;
-}
-
 .lab a {
     display: block;
     margin-top: 10px;
@@ -148,12 +143,15 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Labs sub-page */
  .labNumber {
     color: #005C53; 
+    font-size: 12em;
     font-weight: normal;
 }
 
 .labName {
     color: #DBF227; 
+    font-size: 12em;
     font-weight: bold;
 }
