@@ -149,9 +149,13 @@ html {
     background-color: white; /* Example: different background */
     padding: 40px;
     text-align: center;
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    flex-direction: column;  /* Stacks sections vertically */
     
 .lab-text {
     max-width: 600px;
+    margin: 0 auto; /* Center the text block */
     text-align: center;
     color: #042940;
 }
