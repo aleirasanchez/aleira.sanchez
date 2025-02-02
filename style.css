@@ -183,3 +183,7 @@ html {
     text-align: left;
 }
 
+.objective-text {
+    font-size: 1em; 
+    font-weight: normal;
+}
