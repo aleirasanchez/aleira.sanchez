@@ -70,9 +70,11 @@
                     <h3>Objective: <span class="objective-text">To establish communication between my computer and the Artemis board via Bluetooth, which I will later use to send data from the Artemis board to the computer. To also be able to send Python commands from a Jupyter Notebook to the Artemis board while running Arduino.</span></h3>
                     <h3>Pre-Lab: <span class="objective-text"> Since I had the latest version of the Arduino, I proceeded with creating a new virtial environment named “FastRobots_ble”. I then activated the virtual environment so I could start working on Jupyter Lab. </span></h3>
                     <h3>Configurations: <span class="objective-text"> First thing I did was upload the ble_arduino.ino code to the Artemis board and get its MAC Address. With this I updated the artemis_address in connections.yaml. I proceeded with generating a new UUID so that it is unique to my board and I replaced the BLEService UUID in the ble_arduino.ino with this new UUID. I connected the Artemis board with the computer via Bluetooth by uploading this code in Jupyter Lab:</span></h3>
-                    <img src="bLE.jpg" alt="Bluetooth code" class="lab-image">>
+                    <img src="bLE.png" alt="Bluetooth code" class="lab-image">>
                     <br>
                     <h3>Task 1: Echo</h3>
+                    <p>For this task I analyzed the commands PING and SEND_TWO_INTS in the ble_arduino.ino code. With multiple hours of running and debugging I was able to understand what each of their commands do and make something similar for the ECHO command. This is my ECHO command: </p>
+                    <img src="ECHO.png" alt="ECHO command" class="lab-image">>
                     <br>
                         
 
