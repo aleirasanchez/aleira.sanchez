@@ -184,7 +184,7 @@ html {
 
 .gallery {
     display: grid;
-     grid-template-columns: 1fr  /* repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */ 
+    grid-template-columns: 1fr;  /* repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */ 
     gap: 20px; /* Spacing between sections */
     padding: 20px;
 }
