@@ -146,12 +146,12 @@ html {
 /* Labs sub-page */
  .labNumber {
     color: ##042940; 
-    font-size: 12em;
+    font-size: 1.5em;
     font-weight: normal;
 }
 
 .labName {
     color: #DBF227; 
-    font-size: 12em;
+    font-size: 1.5em;
     font-weight: bold;
 }
