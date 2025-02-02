@@ -144,7 +144,7 @@ html {
 }
 
 /* Labs sub-page */
- .labNumber {
+/*  .labNumber {
     color: ##042940; 
     font-size: 1.5em;
     font-weight: bold;
@@ -154,4 +154,31 @@ html {
     color: #DBF227; 
     font-size: 1.5em;
     font-weight: bold;
+} */
+
+.lab-text {
+    max-width: 600px;
+    text-align: left;
 }
+
+.lab-text h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #042940;
+    text-align: left;
+}
+
+.lab-text h2 {
+    font-size: 1.9em;
+    font-weight: bold;
+    color: #042940;
+    text-align: left;
+}
+
+.lab-text h3 {
+    font-size: 1.17em;
+    font-weight: bold;
+    color: #042940;
+    text-align: left;
+}
+
