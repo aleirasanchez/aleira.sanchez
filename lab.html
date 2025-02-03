@@ -96,6 +96,16 @@
                     <p>Then, when I was trying to call the command on Python it kept showing an error that said “ AttributeError: GET_TIME_MILLIS”. I had not seen this error before and I could not understand it so I asked AI what the error meant and it said that “the command doesn’t exist in the CMD enum”. I remembered seeing in the folder ble_python a code called “cmd_types.py” that looked similar to what AI showed me. I went to that code and added the GET_TIME_MILLIS to it, following ECHO which is how I wrote it in the ble_arduino.ino code, and this is what the Python side looked like after I got it to work: </p>
                     <img src="millis_python.png" alt="Get time millis Python" class="lab-image">
                     <br>
+
+                    <h3>Task 4: Notification Handler>
+                    <p> For this task, I created a notification handler that would receive the string from the board and extract the number. In the function I decided to look for "T:" in the string and extract whatever is after that. I was able to do this with the split function I found in the python cheatsheet that's in the course website. </p>
+                    <img src="notif handler.png" alt="Notification handler" class="lab-image">
+                    <br>
+
+                    <h3>Task 5: >
+                    <p>  </p>
+<!--                     <img src="notif handler.png" alt="Notification handler" class="lab-image"> -->
+                    <br>
                         
 
                 <a href="index.html#lab1b">Back to Lab 1B on main page</a> <!-- Link back to the section on the main page -->
