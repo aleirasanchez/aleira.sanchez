@@ -92,7 +92,7 @@
 
                     <h3>Task 3: GET_TIME_MILLIS</h3>
                     <p>At first, I searched if there is a function in Arduino that would give you the time in milliseconds. Once I saw there is, I copied the code from the ECHO command and modified it so it would print the value of millis(). I ran into an error uploading the code to the board because I forgot to write a class for the millis function, but I then added double and I was able to upload it. This is my GET_TIME_MILLIS command:  </p>
-                    <img src="millis_arduino.png" alt="Get time millis Command" class="lab-image">
+                    <img src="millis arduino.png" alt="Get time millis Command" class="lab-image">
                     <p>Then, when I was trying to call the command on Python it kept showing an error that said “ AttributeError: GET_TIME_MILLIS”. I had not seen this error before and I could not understand it so I asked AI what the error meant and it said that “the command doesn’t exist in the CMD enum”. I remembered seeing in the folder ble_python a code called “cmd_types.py” that looked similar to what AI showed me. I went to that code and added the GET_TIME_MILLIS to it, following ECHO which is how I wrote it in the ble_arduino.ino code, and this is what the Python side looked like after I got it to work: </p>
                     <img src="millis_python.png" alt="Get time millis Python" class="lab-image">
                     <br>
