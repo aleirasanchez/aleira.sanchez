@@ -175,20 +175,17 @@
                     <p>For this part, I adapted the code from Example1_Basics, edited the loop funciton and made a new function. At first my values for pitch and roll were printing out like if they were switched, but after talking with the Professor we realized that the lecture notes had a typo and the equations for roll and pitch were switched. We fixed it and got it working accordingly. These are my edits to the previous code:</p>
                     <pre><code>
 void loop(){
-  
 
-  if (myICM.dataReady()) {                                 
-    myICM.getAGMT();                                        
+  if (myICM.dataReady()) { 
+                        
+    myICM.getAGMT(); 
     getRollandPitch(myICM.accX(),myICM.accY(),myICM.accZ());
-    delay(50);
-  }
-  else
-  {
+    delay(50); }
+  else {
     SERIAL_PORT.println("Waiting for data");
-    delay(500);
-  }
-}
+    delay(500);}}
 
+                        
 void getRollandPitch(float x,float y,float z) {
   float roll = 0;
   float pitch = 0;
@@ -199,8 +196,7 @@ void getRollandPitch(float x,float y,float z) {
   SERIAL_PORT.print("Roll:");
   SERIAL_PORT.print(roll);
   SERIAL_PORT.print(" | Pitch:");
-  SERIAL_PORT.println(pitch);
-}                    
+  SERIAL_PORT.println(pitch);}                    
                     </code></pre>
 
                     
