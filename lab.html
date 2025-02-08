@@ -156,9 +156,16 @@
                 <div class="lab-text">
                     <h1>Lab 2: IMU</h1>
                     <h3>Objective: <span class="objective-text">Familiarize myself with the IMU and how to integrate it to your robot. Also play around with the robot given, understand how to use it and its limits and faults. </span></h3>
-                    <h3>Pre-Lab: <span class="objective-text">Read up on the IMU and the datasheet. Skim over the lab instructions as well so when I get to lab I can immeadiately start with the lab itself since it is extensive.</span></h3>
+                    <h3>Pre-Lab: <span class="objective-text">Read up on the IMU and its datasheet. Skim through the lab instructions as well, so that when I get to the lab, I can start immediately since it's extensive.</span></h3>
+                    
                     <h3>Set Up the IMU: </h3>
-
+                    <p>I already had the libraries needed in Arduino because we used them in class so I proceeded to connect my IMU to the Artemis board via the QWICC connectors.</p>
+                    <img src="artemis_imu.png" alt="IMU" class="lab-image">
+                    <br>
+                    <p>I then ran the example code Example1_Basics from the SparkFun 9DOF IMU Breakout ICM-20948 Arduino Library. This is what it outputted:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ddwSwPX0hdY?si=39NRvYvRptkVME6h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <br>
+                    <p>The AD0_VAL represents the value of the last bit in the I2C address. The default on the IMU is 1, but when the ADR jumper is closed, the value becomes 0. This controls the I2C address of the IMU: when AD0_VAL is 1, the address is 0x69, and when AD0_VAL is 0, the address is 0x68. This is useful when using multiple IMUs on the same I2C bus, allowing them to have different addresses and communicate independently. </p>
                     
                 <a href="index.html#lab2">Back to Lab 2 on main page</a> 
             </section>
