@@ -197,11 +197,76 @@ void getRollandPitch(float x,float y,float z) {
   SERIAL_PORT.print("Roll:");
   SERIAL_PORT.print(roll);
   SERIAL_PORT.print(" | Pitch:");
-  SERIAL_PORT.println(pitch);}                    
+  SERIAL_PORT.println(pitch);}
                     </code></pre>
                     
                     <p>And this is the output at {-90,0,90}:</p>
                     <img src="pitch_roll.jpg" alt="pitch and roll" class="lab-image">
+                    <br>
+                    <p>Accel. accuracy dicussion:For this part I decided to take bits of a sketch I had from a past project, adapt all the top stuff from the previous example code and then print out the conversion factor of each axis after collecting raw data. This is what I added to the code:</p>
+                    <pre><code>
+void loop() {
+  if (myICM.dataReady()) {
+    myICM.getAGMT();
+
+    rawAccX = myICM.accX();
+    rawAccY = myICM.accY();
+    rawAccZ = myICM.accZ();
+                        
+    // Apply calibration factors
+    float calAccX = rawAccX * convF_X;
+    float calAccY = rawAccY * convF_Y;
+    float calAccZ = rawAccZ * convF_Z;
+
+    SERIAL_PORT.print("Conv. Factor X: ");
+    SERIAL_PORT.println(convF_X);
+    SERIAL_PORT.print("Conv. Factor Y: ");
+    SERIAL_PORT.println(convF_Y);
+    SERIAL_PORT.print("Conv. Factor Z: ");
+    SERIAL_PORT.println(convF_Z);
+                        
+    delay(50);}
+                        
+  else {
+    SERIAL_PORT.println("Waiting for data");
+    delay(500); }}
+
+void calibrateAccelerometerUpwards() {
+  SERIAL_PORT.println("Place the accelerometer looking up...");
+  delay(2000);
+  SERIAL_PORT.println("Calibrating upwards...");
+  delay(5000); 
+
+  myICM.getAGMT(); 
+
+  float rawUpX = myICM.accX();
+  float rawUpY = myICM.accY();
+  float rawUpZ = myICM.accZ();
+
+  // Calculate conversion factor
+  convF_X = expectedAccX / rawUpX;  // expectedAccX = 1g
+  convF_Y = expectedAccY / rawUpY;  
+  convF_Z = expectedAccZ / rawUpZ;  // expectedAccZ = 1g
+}
+
+void calibrateAccelerometerDownwards() {
+  SERIAL_PORT.println("Place the accelerometer looking down...");
+  delay(2000);
+  SERIAL_PORT.println("Calibrating downwards...");
+  delay(5000);
+
+  myICM.getAGMT();
+
+  float rawDownX = myICM.accX();
+  float rawDownY = myICM.accY();
+  float rawDownZ = myICM.accZ();
+
+  convF_X = expectedAccX / rawDownX;  
+  convF_Y = expectedAccY / rawDownY;  
+  convF_Z = expectedAccZ / rawDownZ;  
+}           
+                    </code></pre>  
+                    <p>Note:These functions are called in the setup loop which I did not add because it is the exact same from the example code but with two more lines calling these functions. </p>
 
                     
                 <a href="index.html#lab2">Back to Lab 2 on main page</a> 
