@@ -185,7 +185,8 @@ void loop(){
     SERIAL_PORT.println("Waiting for data");
     delay(500);}}
 
-                        
+
+
 void getRollandPitch(float x,float y,float z) {
   float roll = 0;
   float pitch = 0;
@@ -198,6 +199,8 @@ void getRollandPitch(float x,float y,float z) {
   SERIAL_PORT.print(" | Pitch:");
   SERIAL_PORT.println(pitch);}                    
                     </code></pre>
+                    <p>And this is the output at {-90,0,90}:</p>
+                    <img src="pitch_roll.jpg" alt="pitch and roll" class="lab-image">
 
                     
                 <a href="index.html#lab2">Back to Lab 2 on main page</a> 
