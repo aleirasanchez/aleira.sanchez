@@ -277,8 +277,15 @@ Conv. Factor Z: -0.00
 
                     <h3>TASK 3: SENSOR DATA WITH CHOSEN MODE</h3>
                     <p>The ToF sensor supports three distance modes: Short, Medium, and Long. Short mode provides the highest resistance to ambient lighting interference, making it the most reliable option in well-lit environments. However, it has the shortest range, reaching up to 1.3 meters. Medium mode extends the sensor’s range to 3 meters. Long mode allows the sensor to detect objects up to 4 meters away, but it is the most sensitive to ambient lighting, making it more prone to inaccuracies in bright environments. Since I am prioritizing accuracy over range in my data collection, I have chosen to use Short mode for my final robot.</p>
-                    <p>Here is a picture of the setup for collecting data points:</p>
+                    <p>Here is a picture of the setup for data collection:</p>
                     <img src="sensorMode_setup.jpg" alt="Sensor mode setup" class="lab-image">
+
+                    <p>I made a new command in Arduino to collect the data from the ToF sensor :</p>
+                    <img src="ToFcommand.png" alt="ToF command" class="lab-image">
+
+                    <p>And this is the Python side:</p>
+                    <img src="tof_python1.png" alt="ToF python part 1" class="lab-image">
+                    <img src="tof_python2.png" alt="ToF python part 2" class="lab-image">
                     
                     <p>To measure the range of my ToF I recorded measurements in evenly spaced distances between 0.25m and 1.75m from my computer to a stand. It can be seen in the graph below that discrepancies between the measured and actual distances become more noticeable beyond 1.3m. </p>
                     <img src="SensorRangePlot.png" alt="Sensor range plot" class="lab-image">
@@ -286,8 +293,11 @@ Conv. Factor Z: -0.00
                     <p>To evaluate accuracy, I plotted the difference between the measured and actual distances against the actual distances. It is important to note that some human error may be present, as the placement of the sensor may not have been perfectly precise. However, after the 1.3m threshold the difference starts being larger. </p>
                     <img src="AccuracyPlot.png" alt="Accuracy plot" class="lab-image">
                     
-                    <p>In the standard deviation versus actual distance plot, the standard deviation remains between 2.5–5 mm until it approaches the 1.3 m threshold, where it begins to increase. </p>
+                    <p>In the standard deviation versus actual distance plot seen below, the standard deviation remains between 2.5–5 mm until it approaches the 1.3 m threshold, where it begins to increase. </p>
                     <img src="RepeatabilityPlot.png" alt="Repeatability plot" class="lab-image">
+
+                    <p>To analyze the ranging time, I recorded a time array while collecting distance measurements on the Arduino side and then passed it to the Python side. Using this data, I calculated the mean ranging time for each set of collected distance measurements which can be seen below. </p>
+                    <img src="Ranging time.png" alt="Ranging time" class="lab-image">
                     <br>
 
                     <h3>TASK 4: 2 TOF SENSORS AND THE IMU</h3>
