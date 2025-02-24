@@ -301,8 +301,11 @@ Conv. Factor Z: -0.00
                     <img src="Ranging time.png" alt="Ranging time" class="lab-image">
                     <br>
 
-                    <h3>TASK 4: 2 TOF SENSORS AND THE IMU</h3>
-                    <p>bla bla</p>
+                    <h3>TASK 4: TWO TOF SENSORS WORKING IN PARALLEL</h3>
+                    <p>To integrate and collect data of the second ToF sensor I changed the address of my second distance sensor and set its XSHUT pin to high so it would program it in the sensor. For this I added the section shown below into my GET_TOF command in Arduino (full code shown in previous task): </p>
+                    <img src="2TOFcommand.png" alt="Command for two ToF" class="lab-image">
+                    <p>For the rest of the code of distance sensor 2 I just duplicated the commands that were used for distance sensor 1. This is the output of both distance sensors in the Serial Monitor:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/khzG77BJ_Wc?si=huXHCQxHLSMwT4Ov" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     
                     <h3>TASK 5: TOF SENSOR SPEED</h3>
                     <p>bla bla</p>
