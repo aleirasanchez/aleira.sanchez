@@ -399,10 +399,15 @@ Conv. Factor Z: -0.00
                     <p>While running these calibration tests, I noticed that the robot would sometimes move forward in small pulses. I found this strange, so I checked the wiring and discovered that the lead of one of the motor driver's soldered GND wires wasn't cut down properly and was touching the Vin wire. After fixing this issue, the car worked as expected.</p>
                     <p>This is how the car performed after including the calibration factor into the code: </p>
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/bQ-fnFbHAkY?si=51lPf-r2BKMt4oxn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <p>This is the code it ran:</p>
+                    <p>The loop function was getting long so I started making functions for each command and this is the code the car ran:</p>
                     <img src="straightLineCode1.png" alt="Straight Line calibrated code1" class="lab-image">
                     <img src="straightLineCode2.png" alt="Straight Line calibrated code2" class="lab-image">
-                    
+
+                    <h3>ADDING TURNS:</h3>
+                    <p>For this part, I added a simple turn function to my code. Since the pins for moving forward are 0 and 5, and the pins for moving backward are 1 and 4, the pins for turning would be 0 and 4 for a left turn and 5 and 1 for a right turn.</p>
+                    <img src="turn function.png" alt="Turn function" class="lab-image">
+                    <img src="turn addition loop.png" alt="Turn function" class="lab-image">
+                    <p>And this is how the robot performed with a turn:</p>
 
 
                     
