@@ -364,15 +364,33 @@ Conv. Factor Z: -0.00
                     <br>
 
                     <h2>TASKS</h2>
-                    <h3>TASK 1: PWM TESTS</h3>
+                    <h3>PWM TESTS:</h3>
                     <p>Before soldering the motor drivers to the motors themselves, I connected every OUT pin individually to the oscilloscope to make sure it is reading and ooutputting corrrectly. To do this, I connected the VIN and GND pins of the motor driver to the power supply and sent an output of around 3.7V which is a reasonable input voltage withing their 10V range. Below you can see my setup with a motor driver connected to the oscilloscope and power supply.  </p>
                     <img src="IMG_7260.jpg" alt="Power supply setup" class="lab-image">
                     <p> This is the code I burned on the Artemis to see if I can regulate the power on the motor driver output.</p>
                     <img src="analogCode.png" alt="Analog code for oscilloscope" class="lab-image">
-                    
                     <p>Here is an image of the output of the oscilloscope (each OUT pin), this plot remained constant when sending a 200 PWM signal to each OUT pin.</p>
                     <img src="IMG_7256.jpg" alt="Power supply setup" class="lab-image">
+                    
+                    <h3>TESTING INDIVIDUAL MOTORS:</h3>
+                    <p>I proceeded to wire the motors and upload code to the Artemis board that will run one set of the wheels forward and then the same one backwards. The other set of wheels' code was commented out when working on this part. This is the code: </p>
+                    <img src="eachSet_turns.png" alt="Each wheel set turns" class="lab-image">
+                    <p>This is how the robot reacted:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ybmaBvgfM-c?si=L4XBTq2sPk4HABGf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-5GV7pHTpVw?si=HC6hKRZ0vKLp8eci" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+                    <h3>FULLY BATTERY POWERED MOTOR DRIVERS:</h3>
+                    <p>Here I then moved from the power supply to the 850mAh battery given to us. And after some soldering, I was able to connect all the wires and upload this code:</p>
+                    <img src="allWheels_turn.png" alt="All wheels turn" class="lab-image">
+                    <p>In which the wheels moved as so:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/RevvYjTSwGw?si=40AmAM1Pn_3-7dXc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    
+                    <h3>CAR CHASSIS SETUP:</h3>
+                    <img src="robot_components.jpeg" alt="Robot components" class="lab-image">
+
+                    <h3>LOWER LIMIT PWM:</h3>
+                    
+                    
                 <a href="index.html#lab4">Back to Lab 4 on main page</a> 
             </section>
 
