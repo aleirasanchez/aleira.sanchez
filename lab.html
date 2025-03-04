@@ -354,8 +354,25 @@ Conv. Factor Z: -0.00
             
     <!-- --------LAB 4-------- -->
             <section id="lab4">
-                <h2>Lab 4: Motor Drivers and Open Loop Control</h2>
-                <p>Details about Lab 4...</p>
+                <div class="lab-text">
+                    <h1>Lab 4: Motor Drivers and Open Loop Control</h1>
+                    <h2>PRE-LAB</h2>
+                    <h3>WIRING DIAGRAM: <span class="objective-text"> I started by reviewing the lecture notes and then taking a look at what Nila Narayan and Mikayla Lahr did last year. I then came up with this wiring diagram where AIN1 and BIN1 are connected in series to pin 0 and 4, for motor drivers 1 and 2 respectively. AIN2 and BIN2 follow the same setup but in pins 1 and 5, for motor drivers 1 and 2 respectively. And then, AOUT1 with BOUT1 and AOUT2 with BOUT2 are connected in series with eachother and then solder to each positive and negative lead of the DC motor, respectively.</span></h3>
+                    <img src="motorDriverwires.jpg" alt="Motor drivers' wiring" class="lab-image">
+                    <br>
+                    <h3>BATTERY DISCUSSION: <span class="objective-text">The Artemis board and the motors are powered separately to keep everything running smoothly. Motors can cause sudden changes in current, which might mess with the Artemis and make it glitch or reset. Using separate batteries prevents those power spikes from interfering with the board. Plus, motors need more power, so giving them their own battery makes sure they get enough without affecting the Artemis.</span></h3>
+                    <br>
+
+                    <h2>TASKS</h2>
+                    <h3>TASK 1: PWM TESTS</h3>
+                    <p>Before soldering the motor drivers to the motors themselves, I connected every OUT pin individually to the oscilloscope to make sure it is reading and ooutputting corrrectly. To do this, I connected the VIN and GND pins of the motor driver to the power supply and sent an output of around 3.7V which is a reasonable input voltage withing their 10V range. Below you can see my setup with a motor driver connected to the oscilloscope and power supply.  </p>
+                    <img src="IMG_7260.jpg" alt="Power supply setup" class="lab-image">
+                    <p> This is the code I burned on the Artemis to see if I can regulate the power on the motor driver output.</p>
+                    <img src="analogCode.png" alt="Analog code for oscilloscope" class="lab-image">
+                    
+                    <p>Here is an image of the output of the oscilloscope (each OUT pin), this plot remained constant when sending a 200 PWM signal to each OUT pin.</p>
+                    <img src="IMG_7256.jpg" alt="Power supply setup" class="lab-image">
+
                 <a href="index.html#lab4">Back to Lab 4 on main page</a> 
             </section>
 
