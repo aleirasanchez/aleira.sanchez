@@ -389,7 +389,22 @@ Conv. Factor Z: -0.00
                     <img src="robot_components.jpeg" alt="Robot components" class="lab-image">
 
                     <h3>LOWER LIMIT PWM:</h3>
+                    <p>For the task where we tested the motor drivers running entirely on battery power, I wrote a simple code to make the car move forward for a few seconds and then backward. Since I was testing the motors, I decided to lower the PWM values—not only to observe their effects but also because I had limited space to run the car. I first reduced the PWM value to 100, then to 50, and finally to 45 to see if the car could move even slower. From these tests, I observed that at a PWM of 50, the car could complete its commands, but after a while, it started getting stuck as friction overpowered the movement. At 45, the car couldn't start at all, suggesting that this value is close to the minimum PWM required for the car to move. </p>
                     
+                    <h3>CALIBRATION:</h3>
+                    <p>Before showing my calibrated code, let's take a look at how my robot performed when commanded to drive straight for 3 seconds at 60 PWM, so it reaches 6ft (the end of the blue tape is 6ft):</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qPRmzwZZ9xA?si=2PZAgihux8f_qxcO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    
+                    <p>As you can see, my right wheels are moving faster than my left wheels. To calibrate this, I made an estimated guess for an initial value, starting at 1.2 and increasing it by 0.2 until I reached 1.8, where the robot was able to move in a straight line for 6 feet</p>
+                    <p>While running these calibration tests, I noticed that the robot would sometimes move forward in small pulses. I found this strange, so I checked the wiring and discovered that the lead of one of the motor driver's soldered GND wires wasn't cut down properly and was touching the Vin wire. After fixing this issue, the car worked as expected.</p>
+                    <p>This is how the car performed after including the calibration factor into the code: </p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bQ-fnFbHAkY?si=51lPf-r2BKMt4oxn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>This is the code it ran:</p>
+                    <img src="straightLineCode1.png" alt="Straight Line calibrated code1" class="lab-image">
+                    <img src="straightLineCode2.png" alt="Straight Line calibrated code2" class="lab-image">
+                    
+
+
                     
                 <a href="index.html#lab4">Back to Lab 4 on main page</a> 
             </section>
