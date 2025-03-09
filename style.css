@@ -185,6 +185,11 @@ html {
     font-size: 1em; 
     font-weight: normal;
 }
+    
+code {
+    font-family: monospace;
+    white-space: pre-wrap; /* Ensures the code wraps properly */
+}
 
 .gallery {
     display: grid;
