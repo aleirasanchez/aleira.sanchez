@@ -440,6 +440,11 @@ Conv. Factor Z: -0.00
                     </ul>
                     <pre><code>
 case START_PID:{
+    success = robot_cmd.get_next_value(goalDist);
+    if (!success) return;
+
+    limit_dist = goalDist;
+                        
     // only start if not already on
     if (PID_live) return;
                         
