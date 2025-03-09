@@ -262,7 +262,7 @@ code {
     bottom: 20px;     /* Distance from bottom */
     right: 20px;      /* Distance from right */
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #005C53;
     color: white;
     border: none;
     border-radius: 5px;
@@ -273,6 +273,6 @@ code {
 }
 
 .home-button:hover {
-    background-color: #0056b3;
+    background-color: #005C53;
 }
 
