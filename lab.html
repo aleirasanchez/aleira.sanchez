@@ -420,8 +420,86 @@ Conv. Factor Z: -0.00
             
   <!-- --------LAB 5-------- -->
             <section id="lab5">
-                <h2>Lab 5: Linear PID and Linear Interpolation</h2>
-                <p>Details about Lab 5...</p>
+                <div class="lab-text">
+                    <h1>Lab 5: Linear PID and Linear Interpolation</h1>
+                    <h2>PRE-LAB</h2>
+                    <h3>BLUETOOTH: <span class="objective-text"> In the Pre-lab, I developed a method to send and receive PID data via Bluetooth, allowing for data collection and debugging. To implement this, I created a flag in Arduino that I constantly check its state in my main loop to act accordingly and several new commands: </span></h3>
+                    <ul>
+                        <li><strong>START_PID:</strong> Clears all previously stored data, starts ToF sensor ranging and clock and sets the <code>PID_live</code> flag to <code>true</code> (initialized as <code>false</code> at the start of the sketch).</li>
+                        <li><strong>STOP_PID:</strong> Resets the <code>PID_live</code> flag to <code>false</code> and stops the motors.</li>
+                        <li><strong>SET_PID_GAINS:</strong> Receives input values from Python and updates the PID gain constants globally in Arduino.</li>
+                        <li><strong>SEND_PID:</strong> Transmits the collected PID data to the computer via Bluetooth.</li>
+                    </ul>
+                    <pre><code>
+case START_PID:
+{
+    // only start if not already on
+    if (PID_live) return;
+                        
+    distance_array1.clear; 
+    motor_speedArray.clear;
+    time_pid.clear;
+
+    int pid_idx = 0; //index used in the loop
+    int time_pid_start = millis();
+    TOFSensor1.startRanging();
+    PID_live = true;
+                        
+    break;
+}
+        
+case STOP_PID:
+{
+    // only stop running if still on
+    if (!PID_live) return;
+
+    PID_live = false;
+    stop_motors();
+
+    break;
+}
+
+case SET_PID_GAINS:
+{
+    success = robot_cmd.get_next_value(Kp);
+    if (!success)
+        return;
+
+    success = robot_cmd.get_next_value(Ki);
+    if (!success)
+        return;
+
+    success = robot_cmd.get_next_value(Kd);
+    if (!success)
+        return;
+
+    K_p = Kp;
+    K_i = Ki;
+    K_d = Kd;
+
+    break;
+}
+        
+case SEND_PID:
+{
+    for (int i = 0; i < ArraySize; i++) {
+        tx_estring_value.clear();
+        tx_estring_value.append(time_pid[i]);
+        tx_estring_value.append(",");
+        tx_estring_value.append(distance_array1[i]);
+        tx_estring_value.append(",");
+        tx_estring_value.append(motor_speedArray[i]);
+        tx_characteristic_string.writeValue(tx_estring_value.c_str());
+    }
+    break;
+}
+                    </code></pre>
+                    <br>
+                    
+                    <h2>TASKS</h2>
+                    <h3>POSITION CONTROL:</h3>
+<!--                     <img src="IMG_7260.jpg" alt="Power supply setup" class="lab-image"> -->
+                    
                 <a href="index.html#lab5">Back to Lab 5 on main page</a> 
             </section>
 
