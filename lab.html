@@ -431,8 +431,7 @@ Conv. Factor Z: -0.00
                         <li><strong>SEND_PID:</strong> Transmits the collected PID data to the computer via Bluetooth.</li>
                     </ul>
                     <pre><code>
-case START_PID:
-{
+case START_PID:{
     // only start if not already on
     if (PID_live) return;
                         
@@ -445,22 +444,18 @@ case START_PID:
     TOFSensor1.startRanging();
     PID_live = true;
                         
-    break;
-}
+    break;}
         
-case STOP_PID:
-{
+case STOP_PID:{
     // only stop running if still on
     if (!PID_live) return;
 
     PID_live = false;
     stop_motors();
 
-    break;
-}
+    break;}
 
-case SET_PID_GAINS:
-{
+case SET_PID_GAINS:{
     success = robot_cmd.get_next_value(Kp);
     if (!success)
         return;
@@ -477,8 +472,7 @@ case SET_PID_GAINS:
     K_i = Ki;
     K_d = Kd;
 
-    break;
-}
+    break;}
         
 case SEND_PID:
 {
@@ -491,8 +485,7 @@ case SEND_PID:
         tx_estring_value.append(motor_speedArray[i]);
         tx_characteristic_string.writeValue(tx_estring_value.c_str());
     }
-    break;
-}
+    break;}
                     </code></pre>
                     <br>
                     
