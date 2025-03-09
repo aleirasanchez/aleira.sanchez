@@ -426,7 +426,7 @@ Conv. Factor Z: -0.00
                     <h3>BLUETOOTH: <span class="objective-text"> In the Pre-lab, I developed a method to send and receive PID data via Bluetooth, allowing for data collection and debugging. To implement this, I created a flag in Arduino that I constantly check its state in my main loop to act accordingly and several new commands: </span></h3>
                     <ul>
                         <li><strong>START_PID:</strong> Clears all previously stored data, starts ToF sensor ranging and clock and sets the <code>PID_live</code> flag to <code>true</code> (initialized as <code>false</code> at the start of the sketch).</li>
-                        <li><strong>STOP_PID:</strong> Resets the <code>PID_live</code> flag to <code>false</code> and stops the motors.</li>
+                        <li><strong>STOP_PID:</strong> Resets the <code>PID_live</code> flag to <code>false</code> and stops the motors.     </li>
                         <li><strong>SET_PID_GAINS:</strong> Receives input values from Python and updates the PID gain constants globally in Arduino.</li>
                         <li><strong>SEND_PID:</strong> Transmits the collected PID data to the computer via Bluetooth.</li>
                     </ul>
@@ -439,13 +439,14 @@ case START_PID:{
     motor_speedArray.clear;
     time_pid.clear;
 
-    int pid_idx = 0; //index used in the loop
+    int pid_idx = 0; ]
     int time_pid_start = millis();
     TOFSensor1.startRanging();
     PID_live = true;
                         
     break;}
-        
+
+
 case STOP_PID:{
     // only stop running if still on
     if (!PID_live) return;
@@ -455,6 +456,7 @@ case STOP_PID:{
 
     break;}
 
+                        
 case SET_PID_GAINS:{
     success = robot_cmd.get_next_value(Kp);
     if (!success)
@@ -473,7 +475,8 @@ case SET_PID_GAINS:{
     K_d = Kd;
 
     break;}
-        
+
+                        
 case SEND_PID:
 {
     for (int i = 0; i < ArraySize; i++) {
