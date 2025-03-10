@@ -444,7 +444,7 @@ case START_PID:{
     if (!success) return;
     limit_dist = goalDist;
 
-    int pid_idx = 0; ]
+    int pid_idx = 0;
     int time_pid_start = millis();
     TOFSensor1.startRanging();
     PID_live = true;
@@ -512,7 +512,7 @@ void loop(){
         TOFSensor1.stopRanging();
         TOFSensor1.startRanging();
             
-        //P-control------
+        //P-control
         motor_speed = pos_control(distance1, limit_dist);
 
         if(pid_idx < ArraySize){
@@ -545,8 +545,7 @@ float pos_control(float actual_dist, float goal_dist) {
   else if (p_control < 0) {
     if (p_control < -max_speed) p_control = -max_speed;
     return p_control; }
-  return p_control;
-}
+  return p_control; }
                     </code></pre>
                     <br>
         
