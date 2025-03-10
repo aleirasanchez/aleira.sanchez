@@ -442,15 +442,7 @@ Conv. Factor Z: -0.00
 case START_PID:{
     success = robot_cmd.get_next_value(goalDist);
     if (!success) return;
-
     limit_dist = goalDist;
-                        
-    // only start if not already on
-    if (PID_live) return;
-                        
-    distance_array1.clear; 
-    motor_speedArray.clear;
-    time_pid.clear;
 
     int pid_idx = 0; ]
     int time_pid_start = millis();
@@ -461,9 +453,6 @@ case START_PID:{
 
 
 case STOP_PID:{
-    // only stop running if still on
-    if (!PID_live) return;
-
     PID_live = false;
     stop_motors();
 
@@ -471,21 +460,22 @@ case STOP_PID:{
 
                         
 case SET_PID_GAINS:{
-    success = robot_cmd.get_next_value(Kp);
+    float nKp, nKi, nKd;
+    success = robot_cmd.get_next_value(nKp);
     if (!success)
         return;
 
-    success = robot_cmd.get_next_value(Ki);
+    success = robot_cmd.get_next_value(nKi);
     if (!success)
         return;
 
-    success = robot_cmd.get_next_value(Kd);
+    success = robot_cmd.get_next_value(nKd);
     if (!success)
         return;
 
-    K_p = Kp;
-    K_i = Ki;
-    K_d = Kd;
+    K_p = nKp;
+    K_i = nKi;
+    K_d = nKd;
 
     break;}
 
@@ -506,7 +496,67 @@ case SEND_PID:
                     <br>
                     
                     <h2>TASKS</h2>
-                    <h3>POSITION CONTROL:</h3>
+                    <h3>P-CONTROL:</h3>
+                    <p>For the P controller, I wrote code in the <code>loop</code> function that continuously checks the state of the <code>PID_live</code> flag. When <code>PID_live</code> is true, the robot starts collecting data and adjusts its movement based on its distance from the goal. It either moves forward or reverses accordingly. The speed for this adjustment is calculated by a separate function I created, <code>pos_control</code>, which returns the PWM value for the proportional control term.</p>
+                    <pre><code>
+void loop(){
+...if bluetooth connected...
+
+    if (PID_live){  
+        float distance1;
+        float motor_speed;
+
+        while (!TOFSensor1.checkForDataReady()){}
+        distance1 = TOFSensor1.getDistance(); //distance in mm
+        TOFSensor1.clearInterrupt();
+        TOFSensor1.stopRanging();
+        TOFSensor1.startRanging();
+            
+        //P-control------
+        motor_speed = pos_control(distance1, limit_dist);
+
+        if(pid_idx < ArraySize){
+            distance_array1[pid_idx] = distance1;
+            motor_speedArray[pid_idx] = motor_speed;
+            time_pid[pid_idx] = (float) millis() - time_pid_start;
+        }
+        pid_idx++; 
+            
+        if (motor_speed > 0){ //drive forward
+            straightLine(0, motor_speed); }
+        else if (motor_speed < 0){ //drive backward
+            straightLine(1, abs(motor_speed)); }
+        else {
+            stop_motors(); }
+            
+    }
+          
+}
+
+float pos_control(float actual_dist, float goal_dist) {
+  float error = actual_dist - goal_dist;
+            
+  //P-control------------
+  float p_control = K_p * error;
+  
+  if (p_control > 0) {
+    if (p_control > max_speed) p_control = max_speed;
+    return p_control; }
+  else if (p_control < 0) {
+    if (p_control < -max_speed) p_control = -max_speed;
+    return p_control; }
+  return p_control;
+}
+                    </code></pre>
+                    <br>
+        
+                    <p>I conducted several tests with different gain values, starting at 0.1 and then adjusting to 0.05. With Kp = 0.1, the robot would crash into the wall before reversing, while with Kp = 0.05, it stopped too early, leaving a significant gap from the target. After further testing, I found that a gain of 0.08 yielded the best results, with the robot stopping at approximately 350 mm—about 50 mm short of the goal distance. </p>
+                    <table>
+                        <tr>
+                            <td><img src="Pcontrol_tofPlot.png" alt="P-control ToF plot" width="300"></td>
+                            <td><img src="Pcontrol_pwmPlot.png" alt="P-control PWM plot" width="300"></td>
+                        </tr>
+                    </table>
 <!--                     <img src="IMG_7260.jpg" alt="Power supply setup" class="lab-image"> -->
                     
                 <a href="index.html#lab5">Back to Lab 5 on main page</a> 
