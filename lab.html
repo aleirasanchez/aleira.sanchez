@@ -493,7 +493,6 @@ case SEND_PID:
     }
     break;}
                     </code></pre>
-                    <br>
                     
                     <h2>TASKS</h2>
                     <h3>P-CONTROL:</h3>
@@ -547,7 +546,6 @@ float pos_control(float actual_dist, float goal_dist) {
     return p_control; }
   return p_control; }
                     </code></pre>
-                    <br>
         
                     <p>I conducted several tests with different gain values, starting at 0.1 and then adjusting to 0.05. With Kp = 0.1, the robot would crash into the wall before reversing, while with Kp = 0.05, it stopped too early, leaving a significant gap from the target. After further testing, I found that a gain of 0.08 yielded the best results, with the robot stopping at approximately 350 mm—about 50 mm short of the goal distance. </p>
                     <table>
