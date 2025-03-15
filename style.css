@@ -57,7 +57,7 @@ nav a {
     min-width: 160px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    left: 0; /* Ensure the dropdown starts from the left of the container */
+    left: 0; /* The dropdown starts from the left of the container */
     right: auto; /* Prevent the dropdown from shifting to the right */
 }
 
