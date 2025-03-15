@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleira N. Sanchez - Labs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html" class="logo">Aleira N. Sanchez</a>
+        <ul>
+            <li><a href="index.html">Go back</a></li> <!-- Link back to the main page -->
+        </ul>
+    </nav>
+
+    <button class="home-button" onclick="goHome()">Return to Home</button>
+
+    <script>
+        function goHome() {
+            window.location.href = "index.html"; // Adjust if your homepage is in a different folder
+        }
+    </script>
+
+    
+    <!-- Labs Details Section -->
+    <section id="labs-subpage">
+        <div class="gallery">
+            <section id="lab4">
+                <div class="lab-text">
+                    <h1>Lab 4: Motor Drivers and Open Loop Control</h1>
+                    <h2>PRE-LAB</h2>
+                    <h3>WIRING DIAGRAM: <span class="objective-text"> I started by reviewing the lecture notes and then taking a look at what Nila Narayan and Mikayla Lahr did last year. I then came up with this wiring diagram where AIN1 and BIN1 are connected in series to pin 0 and 4, for motor drivers 1 and 2 respectively. AIN2 and BIN2 follow the same setup but in pins 1 and 5, for motor drivers 1 and 2 respectively. And then, AOUT1 with BOUT1 and AOUT2 with BOUT2 are connected in series with eachother and then solder to each positive and negative lead of the DC motor, respectively.</span></h3>
+                    <img src="motorDriverwires.jpg" alt="Motor drivers' wiring" class="lab-image">
+                    <br>
+                    <h3>BATTERY DISCUSSION: <span class="objective-text">The Artemis board and the motors are powered separately to keep everything running smoothly. Motors can cause sudden changes in current, which might mess with the Artemis and make it glitch or reset. Using separate batteries prevents those power spikes from interfering with the board. Plus, motors need more power, so giving them their own battery makes sure they get enough without affecting the Artemis.</span></h3>
+                    <br>
+
+                    <h2>TASKS</h2>
+                    <h3>PWM TESTS:</h3>
+                    <p>Before soldering the motor drivers to the motors themselves, I connected every OUT pin individually to the oscilloscope to make sure it is reading and ooutputting corrrectly. To do this, I connected the VIN and GND pins of the motor driver to the power supply and sent an output of around 3.7V which is a reasonable input voltage withing their 10V range. Below you can see my setup with a motor driver connected to the oscilloscope and power supply.  </p>
+                    <img src="IMG_7260.jpg" alt="Power supply setup" class="lab-image">
+                    <p> This is the code I burned on the Artemis to see if I can regulate the power on the motor driver output.</p>
+                    <img src="analogCode.png" alt="Analog code for oscilloscope" class="lab-image">
+                    <p>Here is an image of the output of the oscilloscope (each OUT pin), this plot remained constant when sending a 200 PWM signal to each OUT pin.</p>
+                    <img src="IMG_7256.jpg" alt="Power supply setup" class="lab-image">
+                    
+                    <h3>TESTING INDIVIDUAL MOTORS:</h3>
+                    <p>I proceeded to wire the motors and upload code to the Artemis board that will run one set of the wheels forward and then the same one backwards. The other set of wheels' code was commented out when working on this part. This is the code: </p>
+                    <img src="eachSet_turns.png" alt="Each wheel set turns" class="lab-image">
+                    <p>This is how the robot reacted:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ybmaBvgfM-c?si=L4XBTq2sPk4HABGf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-5GV7pHTpVw?si=HC6hKRZ0vKLp8eci" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    <h3>FULLY BATTERY POWERED MOTOR DRIVERS:</h3>
+                    <p>Here I then moved from the power supply to the 850mAh battery given to us. And after some soldering, I was able to connect all the wires and upload this code:</p>
+                    <img src="allWheels_turn.png" alt="All wheels turn" class="lab-image">
+                    <p>In which the wheels moved as so:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/RevvYjTSwGw?si=40AmAM1Pn_3-7dXc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    
+                    <h3>CAR CHASSIS SETUP:</h3>
+                    <img src="robot_components.jpeg" alt="Robot components" class="lab-image">
+
+                    <h3>LOWER LIMIT PWM:</h3>
+                    <p>For the task where we tested the motor drivers running entirely on battery power, I wrote a simple code to make the car move forward for a few seconds and then backward. Since I was testing the motors, I decided to lower the PWM values—not only to observe their effects but also because I had limited space to run the car. I first reduced the PWM value to 100, then to 50, and finally to 45 to see if the car could move even slower. From these tests, I observed that at a PWM of 50, the car could complete its commands, but after a while, it started getting stuck as friction overpowered the movement. At 45, the car couldn't start at all, suggesting that this value is close to the minimum PWM required for the car to move. </p>
+                    
+                    <h3>CALIBRATION:</h3>
+                    <p>Before showing my calibrated code, let's take a look at how my robot performed when commanded to drive straight for 3 seconds at 60 PWM, so it reaches 6ft (the end of the blue tape is 6ft):</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qPRmzwZZ9xA?si=2PZAgihux8f_qxcO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    
+                    <p>As you can see, my right wheels are moving faster than my left wheels. To calibrate this, I made an estimated guess for an initial value, starting at 1.2 and increasing it by 0.2 until I reached 1.8, where the robot was able to move in a straight line for 6 feet</p>
+                    <p>While running these calibration tests, I noticed that the robot would sometimes move forward in small pulses. I found this strange, so I checked the wiring and discovered that the lead of one of the motor driver's soldered GND wires wasn't cut down properly and was touching the Vin wire. After fixing this issue, the car worked as expected.</p>
+                    <p>This is how the car performed after including the calibration factor into the code: </p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bQ-fnFbHAkY?si=51lPf-r2BKMt4oxn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>The loop function was getting long so I started making functions for each command and this is the code the car ran:</p>
+                    <img src="straightLineCode1.png" alt="Straight Line calibrated code1" class="lab-image">
+                    <img src="straightLineCode2.png" alt="Straight Line calibrated code2" class="lab-image">
+
+                    <h3>ADDING TURNS:</h3>
+                    <p>For this part, I added a simple turn function to my code. Since the pins for moving forward are 0 and 5, and the pins for moving backward are 1 and 4, the pins for turning would be 0 and 4 for a left turn and 5 and 1 for a right turn.</p>
+                    <img src="turn function.png" alt="Turn function" class="lab-image">
+                    <img src="turn addition loop.png" alt="Turn function" class="lab-image">
+                    <p>And this is how the robot performed with a turn:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-YFFgVuFQaU?si=0Qafong4edcvi5XP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+                    <h2>REFERENCES</h2>
+                    <p>For this Lab I referenced the past lab reports of Mikayla Lahr, Nila Narayan and Patty Meza. I used ChatGPT to fix my grammar and spelling. Also went to office hours during the weekend and the late session on Monday night, very much appreciated. </p>
+                    
+                <a href="index.html#lab4">Back to Lab 4 on main page</a> 
+            </section>
+        </div>
+    </section>
+</body>
+</html>
