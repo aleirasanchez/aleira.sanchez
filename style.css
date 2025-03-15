@@ -57,7 +57,7 @@ nav a {
     display: none;
     position: absolute;
     background-color: #005C53;
-    min-width: 160px;
+    min-width: 250px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1;
     right: 0; 
