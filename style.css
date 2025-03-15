@@ -45,11 +45,11 @@ nav a {
 .dropdown {
     position: relative;
     display: inline-block;
-    font-size: 1.5em;
 }
 
 .bold-text {
     font-weight: bold;
+    font-size: 1.5em;
 }
 
 /* Dropdown menu (hidden by default) */
@@ -62,6 +62,7 @@ nav a {
     z-index: 1;
     right: 0; 
     left: auto; 
+    font-size: 1.5em;
 }
 
 /* Dropdown links */
