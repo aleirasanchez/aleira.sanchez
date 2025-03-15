@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleira N. Sanchez - Labs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html" class="logo">Aleira N. Sanchez</a>
+        <ul>
+            <li><a href="index.html">Go back</a></li> <!-- Link back to the main page -->
+        </ul>
+    </nav>
+
+    <button class="home-button" onclick="goHome()">Return to Home</button>
+
+    <script>
+        function goHome() {
+            window.location.href = "index.html"; // Adjust if your homepage is in a different folder
+        }
+    </script>
+
+    
+    <!-- Labs Details Section -->
+    <section id="labs-subpage">
+        <div class="gallery">
+            <section id="lab6">
+                <div class="lab-text">
+                    <h1>Lab 6: Orientation PID</h1>
+                    <h2>PRE-LAB</h2>
+                    <h3>IMPROVING LAB 5: 
+                        <span class="objective-text"> To start this lab, I ran my Lab 5 code multiple times and perfected it. During this debugging process, because I had changed my code from what I had initially, my calibration factor for the wheels ended up decreasing from 1.8 to 1.6. And when I ran my PID, the final control values that work best were: Kp = 0.08, Ki = 0.00001, Kd = 0.8. My final Lab 5 code is:
+                        </span>
+                    </h3>
+                    <p><a href="finalLab5code.png" target="_blank">Lab 5 code</a></p>
+                    <h3>BLUETOOTH: 
+                        <span class="objective-text"> ...
+                        </span>
+                    </h3>
+
+                <a href="index.html#lab6">Back to Lab 6 on main page</a> 
+            </section>
+        </div>
+    </section>
+</body>
+</html>
