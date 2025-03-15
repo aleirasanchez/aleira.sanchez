@@ -48,6 +48,10 @@ nav a {
     font-size: 1.5em;
 }
 
+.bold-text {
+    font-weight: bold;
+}
+
 /* Dropdown menu (hidden by default) */
 .dropdown-content {
     display: none;
