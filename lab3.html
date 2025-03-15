@@ -25,105 +25,107 @@
 
     
     <!-- Labs Details Section -->
-    <section id="lab3">
-                <div class="lab-text">
-                    <h1>Lab 3: ToF</h1>
-<!--                     <h2>Objective: <span class="objective-text">To enhance the robot's capabilities by integrating distance sensors. The quicker my robot can take measurements and the more reliable my sensor readings are, the faster it can operate. </span></h2> -->
-                    <h2>PRE-LAB</h2>
-                    <h3>NOTE THE I2C ADDRESS: <span class="objective-text">The default I2C address of the time of flight sensor according to the data sheet is 0x52.</span></h3>
-                    <br>
-                    <h3>TWO ToF SENSORS APPROACH: <span class="objective-text">I intend to incorporate two ToF sensors on my robot to enhance the accuracy of obstacle detection. By using multiple sensors, I can average the measurements obtained from both devices, which will help mitigate any discrepancies in individual readings. The improved accuracy in measuring distances will significantly reduce the likelihood of collisions and potential damage to the robot, ensuring smoother operation and enhanced safety during its tasks.</span></h3>
-                    <br>
-                    <h3>PLACEMENT OF SENSORS: <span class="objective-text">By positioning both ToF sensors at the front corners of the robot, I am maximizing the coverage area in the front which helps identify objects that may approach from the sides, such as a wall jutting out into its path. If both sensors were placed in the middle or one in the middle and one in the back, the robot might miss detecting these side obstacles, potentially leading to collisions. However, this corner placement may not detect certain obstacles directly in front of the robot if they are positioned too close, as the sensors might not have the required angle to accurately measure the distance. Furthermore, since the sensors are only located at the front, any obstacles that appear from behind the robot will go undetected, leaving the robot vulnerable to unexpected challenges.</span></h3>
-                    <br>
-                    <h3>SKETCH OF WIRING DIAGRAM: <span class="objective-text">For my ToF sensors, I decided to programmatically change the address of the second distance sensor when it is powered on so I wired the XSHUT pin of one of the sensors to the A8 pin on the Artemis board. </span></h3>
-                    <img src="wiring sketch.png" alt="Wiring sketch diagram" class="lab-image">
-                    <br>
-
-                    <h2>TASKS</h2>
-                    <h3>TASK 1: TOF SENSOR CONNECTION TO QWICC BREAKOUT BOARD</h3>
-                    <img src="ToF_connections.jpg" alt="ToF connections" class="lab-image">
-                    <br>
-
-                    <h3>TASK 2: ARTEMIS SCANNING THE I2C DEVICE</h3>
-                    <p>In the data sheet, the default address for the time of flight sensor is listed as 0x52. However, the serial monitor output shows it as 0x29. This discrepancy arises because the data sheet presents the address in an 8-bit format, while Arduino utilizes a 7-bit address. The conversion from 0x52 to 0x29 occurs by shifting the 8-bit address one bit to the right: 0x52 >> 1 = 0x29. This removes the write bit (0).</p>
-                    <img src="I2C scanning.png" alt="I2C scanning" class="lab-image">
-                    <br>
-
-                    <h3>TASK 3: SENSOR DATA WITH CHOSEN MODE</h3>
-                    <p>The ToF sensor supports three distance modes: Short, Medium, and Long. Short mode provides the highest resistance to ambient lighting interference, making it the most reliable option in well-lit environments. However, it has the shortest range, reaching up to 1.3 meters. Medium mode extends the sensor’s range to 3 meters. Long mode allows the sensor to detect objects up to 4 meters away, but it is the most sensitive to ambient lighting, making it more prone to inaccuracies in bright environments. Since I am prioritizing accuracy over range in my data collection, I have chosen to use Short mode for my final robot.</p>
-                    <p>Here is a picture of the setup for data collection:</p>
-                    <img src="sensorMode_setup.jpg" alt="Sensor mode setup" class="lab-image">
-
-                    <p>I made a new command in Arduino to collect the data from the ToF sensor :</p>
-                    <img src="ToFcommand.png" alt="ToF command" class="lab-image">
-
-                    <p>And this is the Python side:</p>
-                    <img src="tof_python1.png" alt="ToF python part 1" class="lab-image">
-                    <img src="tof_python2.png" alt="ToF python part 2" class="lab-image">
-                    
-                    <p>To measure the range of my ToF I recorded measurements in evenly spaced distances between 0.25m and 1.75m from my computer to a stand. It can be seen in the graph below that discrepancies between the measured and actual distances become more noticeable beyond 1.3m. </p>
-                    <img src="SensorRangePlot.png" alt="Sensor range plot" class="lab-image">
-                    
-                    <p>To evaluate accuracy, I plotted the difference between the measured and actual distances against the actual distances. It is important to note that some human error may be present, as the placement of the sensor may not have been perfectly precise. However, after the 1.3m threshold the difference starts being larger. </p>
-                    <img src="AccuracyPlot.png" alt="Accuracy plot" class="lab-image">
-                    
-                    <p>In the standard deviation versus actual distance plot seen below, the standard deviation remains between 2.5–5 mm until it approaches the 1.3 m threshold, where it begins to increase. </p>
-                    <img src="RepeatabilityPlot.png" alt="Repeatability plot" class="lab-image">
-
-                    <p>To analyze the ranging time, I recorded a time array while collecting distance measurements on the Arduino side and then passed it to the Python side. Using this data, I calculated the mean ranging time for each set of collected distance measurements which can be seen below. </p>
-                    <img src="Ranging time.png" alt="Ranging time" class="lab-image">
-                    <br>
-
-                    <h3>TASK 4: TWO TOF SENSORS AND IMU WORKING IN PARALLEL</h3>
-                    <p>To integrate and collect data of the second ToF sensor I changed the address of my second distance sensor and set its XSHUT pin to high so it would program it in the sensor. For this I added the section shown below into my GET_TOF command in Arduino (full code shown in previous task): </p>
-                    <img src="2TOFcommand.png" alt="Command for two ToF" class="lab-image">
-                    <p>For the rest of the code of distance sensor 2 I just duplicated the commands that were used for distance sensor 1. This is the output of both distance sensors in the Serial Monitor:</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/khzG77BJ_Wc?si=huXHCQxHLSMwT4Ov" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <p>This is the output when integrating the IMU data:</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MnZ7R2TSkcE?si=5MLgL07DmZD1kQup" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    
-                    <h3>TASK 5: TOF SENSOR SPEED</h3>
-                    <p>To measure how fast my loop executes I collected the time before and after going into my loop that checks whether both sensors' data is ready. The loop is right before collecting the data and storing the values in an array (full code seen previously). The limiting factor in this case is waiting until both sensors are ready to start collecting data. This is the code snippet in my GET_TOF command:  </p>
-                    <img src="TOFspeedSnippet.png" alt="Command for two ToF" class="lab-image">
-                    <p>And this is the output in the Serial Monitor:</p>
-                    <img src="TOFspeed.png" alt="Command for two ToF" class="lab-image">
-                    
-                    <h3>TASK 6: TIME V DISTANCE</h3>
-                    <p>For this, I placed a box in front of my ToF sensors and moved the entire setup (IMU and ToF sensors) back and forth relative to the box while simultaneously moving the IMU up and down. One of the ToF sensors was slightly farther back than the other which is why there is a slight offset between them. This is the ToF sensors' plot: </p>
-                    <img src="Distance vs Time.png" alt="Distance vs time" class="lab-image">
-                    
-                    <h3>TASK 7: TIME V ANGLE</h3>
-                    <p>These are the plots for the accelerometer and gyroscope data with the same movement as before:</p>
-                    <table>
-                        <tr>
-                            <td><img src="AnglevsTime_accel.png" alt="Angle vs time accelerometer" width="300"></td>
-                            <td><img src="AnglevsTime_gyro.png" alt="Angle vs time gyroscope" width="300"></td>
-                        </tr>
-                    </table>
-
-                    <h3>5000 LEVEL - DISCUSSION: INFRARED TRANSMISSION BASED SENSORS</h3>
-                    <p> Two common types of distance sensors are LiDAR sensors and infrared (IR) proximity sensors. According to the <a href="https://youtu.be/2Y9zFh_CpAU?si=gS6qSH3VusWtcxeK" target="_blank">"Distance Sensor Comparison Guide"</a> video by SparkFun Electronics on YouTube, a LiDAR sensor works by emitting continuous pulses of laser light and measuring the time it takes for the beam to return to the sensor. In contrast, an IR proximity sensor determines distance by measuring the intensity of the reflected infrared beam.LiDAR sensors are ideal for long-range measurements, but they have high power consumption and are more expensive compared to other distance sensors. On the other hand, IR proximity sensors offer moderate range and resolution at a lower cost, but they are highly sensitive to ambient light and surface colors, which can affect their accuracy.</p>
-
-                    <h3>5000 LEVEL: SENSITIVITY OF SENSORS TO COLORS AND TEXTURES</h3>
-                    <p>I observed the measurements of each distance sensor for a blanket texture and the colors red, blue and yellow. For all cases, the values remained within the same range, aside from slight variations due to minor changes in sensor positioning from human error. This is the setup:</p>
-                    <table>
-                        <tr>
-                            <td><img src="setup1.jpg" alt="set up 1" width="300"></td>
-                            <td><img src="setup2.jpg" alt="set up 2" width="300"></td>
-                        </tr>
-                    </table>
-                    <p>I then just proceeded to change the color in the screen for each set of data. The data collected for each color is shown below:</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xy6uDSWwkf8?si=0l5m9ZBf-V_qMLZe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/31cJ1cZn32w?si=HYdnhtgx_FdvKXuZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/t2pg2YYiEmE?si=RkdgWTFQWYgjf17p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cKaAQZ_bUoM?si=mNFQQitUxIrBWdAn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<!--                     <br> -->
-                    
-                    <h3>REFERENCES:</h3>
-                    <p>For this Lab I referenced the past lab reports of Mikayla Lahr and Patty Meza.</p>
-                    
-                <a href="index.html#lab3">Back to Lab 3 on main page</a> 
+    <section id="labs-subpage">
+        <div class="gallery">
+            <section id="lab3">
+                        <div class="lab-text">
+                            <h1>Lab 3: ToF</h1>
+        <!--                     <h2>Objective: <span class="objective-text">To enhance the robot's capabilities by integrating distance sensors. The quicker my robot can take measurements and the more reliable my sensor readings are, the faster it can operate. </span></h2> -->
+                            <h2>PRE-LAB</h2>
+                            <h3>NOTE THE I2C ADDRESS: <span class="objective-text">The default I2C address of the time of flight sensor according to the data sheet is 0x52.</span></h3>
+                            <br>
+                            <h3>TWO ToF SENSORS APPROACH: <span class="objective-text">I intend to incorporate two ToF sensors on my robot to enhance the accuracy of obstacle detection. By using multiple sensors, I can average the measurements obtained from both devices, which will help mitigate any discrepancies in individual readings. The improved accuracy in measuring distances will significantly reduce the likelihood of collisions and potential damage to the robot, ensuring smoother operation and enhanced safety during its tasks.</span></h3>
+                            <br>
+                            <h3>PLACEMENT OF SENSORS: <span class="objective-text">By positioning both ToF sensors at the front corners of the robot, I am maximizing the coverage area in the front which helps identify objects that may approach from the sides, such as a wall jutting out into its path. If both sensors were placed in the middle or one in the middle and one in the back, the robot might miss detecting these side obstacles, potentially leading to collisions. However, this corner placement may not detect certain obstacles directly in front of the robot if they are positioned too close, as the sensors might not have the required angle to accurately measure the distance. Furthermore, since the sensors are only located at the front, any obstacles that appear from behind the robot will go undetected, leaving the robot vulnerable to unexpected challenges.</span></h3>
+                            <br>
+                            <h3>SKETCH OF WIRING DIAGRAM: <span class="objective-text">For my ToF sensors, I decided to programmatically change the address of the second distance sensor when it is powered on so I wired the XSHUT pin of one of the sensors to the A8 pin on the Artemis board. </span></h3>
+                            <img src="wiring sketch.png" alt="Wiring sketch diagram" class="lab-image">
+                            <br>
+        
+                            <h2>TASKS</h2>
+                            <h3>TASK 1: TOF SENSOR CONNECTION TO QWICC BREAKOUT BOARD</h3>
+                            <img src="ToF_connections.jpg" alt="ToF connections" class="lab-image">
+                            <br>
+        
+                            <h3>TASK 2: ARTEMIS SCANNING THE I2C DEVICE</h3>
+                            <p>In the data sheet, the default address for the time of flight sensor is listed as 0x52. However, the serial monitor output shows it as 0x29. This discrepancy arises because the data sheet presents the address in an 8-bit format, while Arduino utilizes a 7-bit address. The conversion from 0x52 to 0x29 occurs by shifting the 8-bit address one bit to the right: 0x52 >> 1 = 0x29. This removes the write bit (0).</p>
+                            <img src="I2C scanning.png" alt="I2C scanning" class="lab-image">
+                            <br>
+        
+                            <h3>TASK 3: SENSOR DATA WITH CHOSEN MODE</h3>
+                            <p>The ToF sensor supports three distance modes: Short, Medium, and Long. Short mode provides the highest resistance to ambient lighting interference, making it the most reliable option in well-lit environments. However, it has the shortest range, reaching up to 1.3 meters. Medium mode extends the sensor’s range to 3 meters. Long mode allows the sensor to detect objects up to 4 meters away, but it is the most sensitive to ambient lighting, making it more prone to inaccuracies in bright environments. Since I am prioritizing accuracy over range in my data collection, I have chosen to use Short mode for my final robot.</p>
+                            <p>Here is a picture of the setup for data collection:</p>
+                            <img src="sensorMode_setup.jpg" alt="Sensor mode setup" class="lab-image">
+        
+                            <p>I made a new command in Arduino to collect the data from the ToF sensor :</p>
+                            <img src="ToFcommand.png" alt="ToF command" class="lab-image">
+        
+                            <p>And this is the Python side:</p>
+                            <img src="tof_python1.png" alt="ToF python part 1" class="lab-image">
+                            <img src="tof_python2.png" alt="ToF python part 2" class="lab-image">
+                            
+                            <p>To measure the range of my ToF I recorded measurements in evenly spaced distances between 0.25m and 1.75m from my computer to a stand. It can be seen in the graph below that discrepancies between the measured and actual distances become more noticeable beyond 1.3m. </p>
+                            <img src="SensorRangePlot.png" alt="Sensor range plot" class="lab-image">
+                            
+                            <p>To evaluate accuracy, I plotted the difference between the measured and actual distances against the actual distances. It is important to note that some human error may be present, as the placement of the sensor may not have been perfectly precise. However, after the 1.3m threshold the difference starts being larger. </p>
+                            <img src="AccuracyPlot.png" alt="Accuracy plot" class="lab-image">
+                            
+                            <p>In the standard deviation versus actual distance plot seen below, the standard deviation remains between 2.5–5 mm until it approaches the 1.3 m threshold, where it begins to increase. </p>
+                            <img src="RepeatabilityPlot.png" alt="Repeatability plot" class="lab-image">
+        
+                            <p>To analyze the ranging time, I recorded a time array while collecting distance measurements on the Arduino side and then passed it to the Python side. Using this data, I calculated the mean ranging time for each set of collected distance measurements which can be seen below. </p>
+                            <img src="Ranging time.png" alt="Ranging time" class="lab-image">
+                            <br>
+        
+                            <h3>TASK 4: TWO TOF SENSORS AND IMU WORKING IN PARALLEL</h3>
+                            <p>To integrate and collect data of the second ToF sensor I changed the address of my second distance sensor and set its XSHUT pin to high so it would program it in the sensor. For this I added the section shown below into my GET_TOF command in Arduino (full code shown in previous task): </p>
+                            <img src="2TOFcommand.png" alt="Command for two ToF" class="lab-image">
+                            <p>For the rest of the code of distance sensor 2 I just duplicated the commands that were used for distance sensor 1. This is the output of both distance sensors in the Serial Monitor:</p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/khzG77BJ_Wc?si=huXHCQxHLSMwT4Ov" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <p>This is the output when integrating the IMU data:</p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/MnZ7R2TSkcE?si=5MLgL07DmZD1kQup" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            
+                            <h3>TASK 5: TOF SENSOR SPEED</h3>
+                            <p>To measure how fast my loop executes I collected the time before and after going into my loop that checks whether both sensors' data is ready. The loop is right before collecting the data and storing the values in an array (full code seen previously). The limiting factor in this case is waiting until both sensors are ready to start collecting data. This is the code snippet in my GET_TOF command:  </p>
+                            <img src="TOFspeedSnippet.png" alt="Command for two ToF" class="lab-image">
+                            <p>And this is the output in the Serial Monitor:</p>
+                            <img src="TOFspeed.png" alt="Command for two ToF" class="lab-image">
+                            
+                            <h3>TASK 6: TIME V DISTANCE</h3>
+                            <p>For this, I placed a box in front of my ToF sensors and moved the entire setup (IMU and ToF sensors) back and forth relative to the box while simultaneously moving the IMU up and down. One of the ToF sensors was slightly farther back than the other which is why there is a slight offset between them. This is the ToF sensors' plot: </p>
+                            <img src="Distance vs Time.png" alt="Distance vs time" class="lab-image">
+                            
+                            <h3>TASK 7: TIME V ANGLE</h3>
+                            <p>These are the plots for the accelerometer and gyroscope data with the same movement as before:</p>
+                            <table>
+                                <tr>
+                                    <td><img src="AnglevsTime_accel.png" alt="Angle vs time accelerometer" width="300"></td>
+                                    <td><img src="AnglevsTime_gyro.png" alt="Angle vs time gyroscope" width="300"></td>
+                                </tr>
+                            </table>
+        
+                            <h3>5000 LEVEL - DISCUSSION: INFRARED TRANSMISSION BASED SENSORS</h3>
+                            <p> Two common types of distance sensors are LiDAR sensors and infrared (IR) proximity sensors. According to the <a href="https://youtu.be/2Y9zFh_CpAU?si=gS6qSH3VusWtcxeK" target="_blank">"Distance Sensor Comparison Guide"</a> video by SparkFun Electronics on YouTube, a LiDAR sensor works by emitting continuous pulses of laser light and measuring the time it takes for the beam to return to the sensor. In contrast, an IR proximity sensor determines distance by measuring the intensity of the reflected infrared beam.LiDAR sensors are ideal for long-range measurements, but they have high power consumption and are more expensive compared to other distance sensors. On the other hand, IR proximity sensors offer moderate range and resolution at a lower cost, but they are highly sensitive to ambient light and surface colors, which can affect their accuracy.</p>
+        
+                            <h3>5000 LEVEL: SENSITIVITY OF SENSORS TO COLORS AND TEXTURES</h3>
+                            <p>I observed the measurements of each distance sensor for a blanket texture and the colors red, blue and yellow. For all cases, the values remained within the same range, aside from slight variations due to minor changes in sensor positioning from human error. This is the setup:</p>
+                            <table>
+                                <tr>
+                                    <td><img src="setup1.jpg" alt="set up 1" width="300"></td>
+                                    <td><img src="setup2.jpg" alt="set up 2" width="300"></td>
+                                </tr>
+                            </table>
+                            <p>I then just proceeded to change the color in the screen for each set of data. The data collected for each color is shown below:</p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/xy6uDSWwkf8?si=0l5m9ZBf-V_qMLZe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/31cJ1cZn32w?si=HYdnhtgx_FdvKXuZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/t2pg2YYiEmE?si=RkdgWTFQWYgjf17p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/cKaAQZ_bUoM?si=mNFQQitUxIrBWdAn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <!--                     <br> -->
+                            
+                            <h3>REFERENCES:</h3>
+                            <p>For this Lab I referenced the past lab reports of Mikayla Lahr and Patty Meza.</p>
+                            
+                        <a href="index.html#lab3">Back to Lab 3 on main page</a> 
             </section>
         </div>
     </section>
