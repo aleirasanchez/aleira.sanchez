@@ -45,6 +45,8 @@ nav a {
 .dropdown {
     position: relative;
     display: inline-block;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 /* Dropdown menu (hidden by default) */
@@ -55,6 +57,8 @@ nav a {
     min-width: 160px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    left: 0; /* Ensure the dropdown starts from the left of the container */
+    right: auto; /* Prevent the dropdown from shifting to the right */
 }
 
 /* Dropdown links */
