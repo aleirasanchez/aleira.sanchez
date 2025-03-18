@@ -84,10 +84,21 @@ bool turn_yaw(float goal_yaw){
   return status; //Commands were completed or not
 }
                     </code></pre>
-                    <p>I then included my turn_yaw() function in the command case I made for this lab:</p>
+                    <p>I then included my turn_yaw() function in a command case I made to see if it could go straight for a second, do a 180 turn and come back to where it started:</p>
                     <img src="orientationControl.png" alt="Orientation Command" class="lab-image">
-                    
-                    
+                    <p>This code was succesful (with Kp = 0.08, Ki = 0.01, Kd = 0.9), however I did notice that when my minimum speed was set at 40 pwm, the car barely moved, which led me to think that there is too much traction and should consider taping the wheels. I also took a look at my wiring, just in case, and the ground pin to one of the motor drivers is loose from the Arduino which would affect the overall performance of the car. </p>
+                    <p>I then moved on to implementing the code that would re-orient the car when disoriented. I changed my command case to:</p>
+                    <img src="newOcontrol.png" alt="Orientation Command" class="lab-image">
+                    <img src="newOfunctions.png" alt="Orientation Command functions" class="lab-image">
+                    <p>While I was fixing my data for this new code, the yellow light on my Artemis turned on and I tried to manually reboot it multiple times but the light wouldn' even blink and it was no longer working the Bluetooth and my computer would not recognize it even when I restarted my computer. This is what it looked like:</p>
+                    <img src="yellowLight.jpg" alt="Arduino yellow light" class="lab-image">
+                    <h3>SAMPLING TIME:</h3>
+                    <p>Before my Arduino crashed I was able to get the sampling frequency of my code, I got a value of around 52 Hz. This means the system updates every 20 ms give or take. </p>
+                    <h3>5000+ Wind Up:</h3>
+                    <p>I did however add the wind-up in my code when the Arduino was still fully functional. From experience doing Lab 5, if I did not implement the wind up protection, the oscillations would just start getting larger and larger without stopping unless I shut it down via code. After, a few minor mishaps I started implementing wind up protection everytime I run the I-controller. This is where my wind up is currently at: </p>
+                    <img src="windupO.png" alt="Orientation wind up" class="lab-image">
+                    <h3>REFERENCES:</h3>
+                    <p>For this lab I referenced, Stephan Wagner's and Krithik Ranjan's labs from previous years. I also used ChatGPT to help with the grammar.</p>
             </section>
         </div>
     </section>
