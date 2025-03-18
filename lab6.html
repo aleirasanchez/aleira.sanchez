@@ -37,10 +37,21 @@
                     </h3>
                     <p><a href="finalLab5code.png" target="_blank">Lab 5 code</a></p>
                     <h3>BLUETOOTH: 
-                        <span class="objective-text"> ...
+                        <span class="objective-text"> To improve the way data is collected and sent to the computer, I created a class called MotorControls, which, as the name suggests, is responsible for controlling the motors. This class essentially defines the pins and, depending on the input speed and time, operates the motors accordingly. The code for MotorControl.h is:
                         </span>
                     </h3>
-
+                    <p><a href="motorsControlPt1.png" target="_blank">MotorsControl.h Part 1</a></p>
+                    <p><a href="motorsControlPt2.png" target="_blank">MotorsControl.h Part 2</a></p>
+                    <p>Besides this I added a SEND_ORIENTATION command case to the sketch, to be able to send the information to the computer:</p>
+                    <img src="send_orientation.png" alt="SEND ORIENTATION Command" class="lab-image">
+                    <p>And my notification handler remained the same as last labs with just a few change in the names:</p>
+                    <img src="notif_handler_orientation.png" alt="Notif handler" class="lab-image">
+                    
+                    <h2>TASKS</h2>
+                    <h3>IMPROVING LAB 5: 
+                        <span class="objective-text"> To start this lab, I ran my Lab 5 code multiple times and perfected it. During this debugging process, because I had changed my code from what I had initially, my calibration factor for the wheels ended up decreasing from 1.8 to 1.6. And when I ran my PID, the final control values that work best were: Kp = 0.08, Ki = 0.00001, Kd = 0.8. My final Lab 5 code is:
+                        </span>
+                    </h3>
             </section>
         </div>
     </section>
