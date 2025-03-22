@@ -45,14 +45,21 @@
                     <h1>Lab 7: Kalman Filtering</h1>
                   
 <!--                    <p><a href="motorsControlPt1.png" target="_blank">MotorsControl.h Part 1</a></p> -- -->
-                    
-                    <h2>TASKS</h2>
-                    <h3>ESTIMATING DRAG & MOMENTUM:</h3>
-                    <p>...</p>
-                  
 <!--                     <pre><code>
                     </code></pre>
                     <img src="orientationControl.png" alt="Orientation Command" class="lab-image"> -->
+                    
+                    <h2>TASKS</h2>
+                    <h3>ESTIMATING DRAG & MOMENTUM:</h3>
+                    <p>To estimate my drag and momentum, I started with a step input, u(t), of 150 PWM, which is 58.8% of the maximum PWM. I selected this value because my calibration factor is 1.8, which results in one set of wheels operating at 250 PWM and the other at 150 PWM. Since 250 PWM is the maximum, I used 150 PWM as the input. I ran my code multiple times with this input. Initially, I set the data collection time to one second but found that I couldn't gather enough data points to determine the steady-state speed. Therefore, I increased the collection time to two seconds, which allowed me to obtain sufficient data for analysis. This is the data I got:</p>
+                    <table>
+                        <tr>
+                            <td><img src="distPlot_drag&k.png" alt="Distance vs time" width="300"></td>
+                            <td><img src="speedPlot_drag&k.png" alt="Speed vs time" width="300"></td>
+                        </tr>
+                    </table>
+                    <p>From this trial of 150 PWM input, my 90% of speed is 2.36489 m/s which happens at approximately 1.204 seconds. I then used the equations from lecture to estimate the values for drag and momentum:</p>
+                    <img src="calc4drag&k.png" alt="Orientation Command" class="lab-image">
 
                     <h3>INITIALIZING KALMAN FILTER (PYTHON):</h3>
                     <p>...</p>
