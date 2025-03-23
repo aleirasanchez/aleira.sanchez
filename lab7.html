@@ -59,12 +59,14 @@
                         </tr>
                     </table>
                     <p>From this trial of 150 PWM input, my 90% of speed is 2.36489 m/s which happens at approximately 1.204 seconds. I then used the equations from lecture to estimate the values for drag and momentum:</p>
-                    <img src="calc4drag&k.png" alt="Orientation Command" class="lab-image">
+                    <img src="calc4drag&k.png" alt="Drag & momentum calculations in m/s" class="lab-image">
+                    <p>In units of mm and seconds:</p>
+                    <img src="drag&m_INmm.png" alt="Drag & momentum calculations in mm/s" class="lab-image">
                     <p>For this I created a new case command that you can find here:</p>
                     <p><a href="steadySpeedCase.png" target="_blank">STEADY_SPEED Command</a></p>
 
                     <h3>INITIALIZE KALMAN FILTER(PYTHON):</h3>
-                    <p>Given the values found before, the matrices A and B are </p>
+                    <p>Given the values found before, in mm and secs units, the matrices A and B are </p>
                     <math>
                       <mrow>
                         <mi>A</mi>
@@ -89,7 +91,7 @@
                             <mtd><mn>0</mn></mtd> <mtd><mn>1</mn></mtd>
                           </mtr>
                           <mtr>
-                            <mtd><mn>0</mn></mtd> <mtd><mn>1.91265</mn></mtd>
+                            <mtd><mn>0</mn></mtd> <mtd><mn>-1.9126</mn></mtd>
                           </mtr>
                         </mtable>
                         <mo>]</mo>
@@ -122,7 +124,7 @@
                             <mtd><mn>0</mn></mtd>
                           </mtr>
                           <mtr>
-                            <mtd><mn>4.5232</mn></mtd>
+                            <mtd><mn>4523.2093</mn></mtd>
                           </mtr>
                         </mtable>
                         <mo>]</mo>
@@ -133,7 +135,7 @@
 
                   
                     <h3>IMPLEMENT KALMAN FILTER IN JUPYTER:</h3>
-                    <p>...</p>
+                    <p>To discretize the matrices, I did this in Python:</p>
                   
                     <h3>IMPLEMENT KALMAN FILTER ON THE ROBOT:</h3>
                     <p>...</p>
