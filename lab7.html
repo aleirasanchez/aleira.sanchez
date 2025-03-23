@@ -49,8 +49,8 @@
                     </code></pre>
                     <img src="orientationControl.png" alt="Orientation Command" class="lab-image"> -->
                     
-                    <h2>TASKS</h2>
-                    <h3>ESTIMATING DRAG & MOMENTUM:</h3>
+<!--                     <h2>TASKS</h2> -->
+                    <h2>ESTIMATING DRAG & MOMENTUM:</h2>
                     <p>To estimate my drag and momentum, I started with a step input, u(t), of 150 PWM, which is 58.8% of the maximum PWM. I selected this value because my calibration factor is 1.8, which results in one set of wheels operating at 250 PWM and the other at 150 PWM. Since 250 PWM is the maximum, I used 150 PWM as the input. I ran my code multiple times with this input. Initially, I set the data collection time to one second but found that I couldn't gather enough data points to determine the steady-state speed. Therefore, I increased the collection time to two seconds, which allowed me to obtain sufficient data for analysis. This is the data I got:</p>
                     <table>
                         <tr>
@@ -63,8 +63,72 @@
                     <p>For this I created a new case command that you can find here:</p>
                     <p><a href="steadySpeedCase.png" target="_blank">STEADY_SPEED Command</a></p>
 
-                    <h3>INITIALIZING KALMAN FILTER (PYTHON):</h3>
+                    <h2>INITIALIZING KALMAN FILTER (PYTHON):</h2>
+                    <p>Given the values found before, the matrices A and B are </p>
+                    <math>
+                      <mrow>
+                        <mi>A</mi>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <mtable>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd> <mtd><mn>1</mn></mtd>
+                          </mtr>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd> <mtd><mfrac>
+                              <mo>-d</mo>
+                              <mo>m</mo>
+                            </mfrac></mtd>
+                          </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <mtable>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd> <mtd><mn>1</mn></mtd>
+                          </mtr>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd> <mtd><mn>1.91265</mn></mtd>
+                          </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                      </mrow>
+                    </math>
+                    
+                    <math>
+                      <mrow>
+                        <mi>B</mi>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <mtable>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd>
+                          </mtr>
+                          <mtr>
+                            <mtd><mfrac>
+                              <mn>1</mn>
+                              <mn>m</mn>
+                            </mfrac></mtd>
+                          </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <mtable>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd>
+                          </mtr>
+                          <mtr>
+                            <mtd><mn>4.5232</mn></mtd>
+                          </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                      </mrow>
+                    </math>
                     <p>...</p>
+
+
                   
                     <h3>IMPLEMENTING KALMAN FILTER IN JUPYTER:</h3>
                     <p>...</p>
