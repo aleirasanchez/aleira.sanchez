@@ -98,7 +98,7 @@
                       </mrow>
                     </math>
                     
-                    <mspace width="2em"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp; <!-- space between matrices -->
                         
                     <math>
                       <mrow>
@@ -218,8 +218,7 @@ x = np.array([[dist_array[0]],[0]])
                       </mrow>
                     </math>
                         
-                    <br>
-                        
+                    <br>      
                 <!-- this is sigma 2 -->
                     <math>
                       <mrow>
@@ -247,6 +246,102 @@ x = np.array([[dist_array[0]],[0]])
                         <mi>mm/s</mi>
                       </mrow>
                     </math>
+                    
+                    <br>
+<!--                     this is the sum -->
+                    <math>
+                      <mrow>
+                        <mi>Σ</mi><sub>u</sub>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <mtable>
+                          <mtr>
+                            <mtd>
+                              <msup>
+                                <mi>σ</mi><sub>1</sub>
+                                <mn>2</mn>
+                              </msup>
+                            </mtd>
+                            <mtd><mn>0</mn></mtd>
+                          </mtr>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd>
+                            <mtd>
+                              <msup>
+                                <mi>σ</mi><sub>2</sub>
+                                <mn>2</mn>
+                              </msup>
+                            </mtd>
+                          </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <mtable>
+                          <mtr>
+                            <mtd>
+                              <msup>
+                                <mrow>
+                                  <mn>32.678</mn>
+                                  <mi>mm</mi>
+                                </mrow>
+                                <mn>2</mn>
+                              </msup>
+                            </mtd>
+                            <mtd><mn>0</mn></mtd>
+                          </mtr>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd>
+                            <mtd>
+                              <msup>
+                                <mrow>
+                                  <mn>32.678</mn>
+                                  <mi>mm/s</mi>
+                                </mrow>
+                                <mn>2</mn>
+                              </msup>
+                            </mtd>
+                          </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                      </mrow>
+                    </math>
+<!--                     this is sigma 3 -->
+                    <math>
+                      <mrow>
+                        <mi>σ</mi><sub>3</sub>
+                        <mo>=</mo>
+                        <mn>20</mn>
+                        <mi>mm</mi>
+                      </mrow>
+                    </math>
+                    
+                    <br>
+                    
+                    <math>
+                      <mrow>
+                        <mi>Σ</mi><sub>z</sub>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <msup>
+                          <mi>σ</mi><sub>3</sub>
+                          <mn>2</mn>
+                        </msup>
+                        <mo>]</mo>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <msup>
+                          <mrow>
+                            <mn>20</mn>
+                            <mi>mm</mi>
+                          </mrow>
+                          <mn>2</mn>
+                        </msup>
+                        <mo>]</mo>
+                      </mrow>
+                    </math>
+
+
                         
                     <h3>IMPLEMENT KALMAN FILTER IN JUPYTER:</h3>
                     <p>...</p>
