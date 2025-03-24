@@ -130,9 +130,46 @@
                         <mo>]</mo>
                       </mrow>
                     </math>
-                    <p>To discretize the matrices, I did the following in Python:</p>
+                    <p>To discretize the matrices, I found that the sampling time is 0.0936 secs. Then, I did the following in Python to find A_d and B_d:</p>
                     <img src="python_AdBd.png" alt="Ad & Bd calculations in mm/s" class="lab-image">
-
+                    <p>Where I got these values for Ad and Bd:</p>
+                    <math>
+                      <mrow>
+                        <mi>A</mi>
+                        <mo>_d</mo>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <mtable>
+                          <mtr>
+                            <mtd><mn>1</mn></mtd> <mtd><mn>0.09364706</mn></mtd>
+                          </mtr>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd> <mtd><mn>0.82088613</mn></mtd>
+                          </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                      </mrow>
+                    </math>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp; <!-- space between matrices -->
+                    
+                    <math>
+                      <mrow>
+                        <mi>B</mi>
+                        <mo>_d</mo>
+                        <mo>=</mo>
+                        <mo>[</mo>
+                        <mtable>
+                          <mtr>
+                            <mtd><mn>0</mn></mtd>
+                          </mtr>
+                          <mtr>
+                            <mtd><mn>423.5852447</mn></mtd>
+                          </mtr>
+                        </mtable>
+                        <mo>]</mo>
+                      </mrow>
+                    </math>
 
                   
                     <h3>IMPLEMENT KALMAN FILTER IN JUPYTER:</h3>
