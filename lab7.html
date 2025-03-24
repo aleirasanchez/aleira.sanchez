@@ -190,61 +190,7 @@ C = np.array([[1,0]])
 x = np.array([[dist_array[0]],[0]])
                     </code></pre>
                     <p>The final component necessary for the Kalman Filter to function effectively is the selection of the process noise and sensor noise covariance matrices. The formulas for these, as well as the value of σ_3, were obtained from slide 16 of Lecture 14. </p>
-                <!-- this is sigma 1 -->
-                    <math>
-                      <mrow>
-                        <mi>σ</mi><sub>1</sub>
-                        <mo>=</mo>
-                        <msqrt>
-                          <mrow>
-                            <mo>(</mo>
-                            <msup>
-                              <mn>10</mn>
-                              <mi>mm</mi>
-                              <mn>2</mn>
-                            </msup>
-                            <mo>)</mo>
-                            <mo>·</mo>
-                            <mfrac>
-                              <mn>1</mn>
-                              <mn>0.09364706</mn>
-                            </mfrac>
-                          </mrow>
-                        </msqrt>
-                        <mo>=</mo>
-                        <mn>32.678</mn>
-                        <mi>mm</mi>
-                      </mrow>
-                    </math>
-                        
-                    <br>      
-                <!-- this is sigma 2 -->
-                    <math>
-                      <mrow>
-                        <mi>σ</mi><sub>2</sub>
-                        <mo>=</mo>
-                        <msqrt>
-                          <mrow>
-                            <mo>(</mo>
-                            <mn>10</mn>
-                            <msup>
-                              <mi>mm/s</mi>
-                              <mn>2</mn>
-                            </msup>
-                            <mo>)</mo>
-                            <mo>⋅</mo>
-                            <mo>(</mo>
-                            <mn>1</mn>
-                            <mo>/</mo>
-                            <mn>0.09364706</mn>
-                            <mo>)</mo>
-                          </mrow>
-                        </msqrt>
-                        <mo>=</mo>
-                        <mn>32.678</mn>
-                        <mi>mm/s</mi>
-                      </mrow>
-                    </math>
+                    <p>...</p>
                     
                     <br>
 <!--                     this is the sum -->
@@ -274,37 +220,9 @@ x = np.array([[dist_array[0]],[0]])
                           </mtr>
                         </mtable>
                         <mo>]</mo>
-                        <mo>=</mo>
-                        <mo>[</mo>
-                        <mtable>
-                          <mtr>
-                            <mtd>
-                              <msup>
-                                <mrow>
-                                  <mn>32.678</mn>
-                                  <mi>mm</mi>
-                                </mrow>
-                                <mn>2</mn>
-                              </msup>
-                            </mtd>
-                            <mtd><mn>0</mn></mtd>
-                          </mtr>
-                          <mtr>
-                            <mtd><mn>0</mn></mtd>
-                            <mtd>
-                              <msup>
-                                <mrow>
-                                  <mn>32.678</mn>
-                                  <mi>mm/s</mi>
-                                </mrow>
-                                <mn>2</mn>
-                              </msup>
-                            </mtd>
-                          </mtr>
-                        </mtable>
-                        <mo>]</mo>
                       </mrow>
                     </math>
+
 <!--                     this is sigma 3 -->
                     <math>
                       <mrow>
