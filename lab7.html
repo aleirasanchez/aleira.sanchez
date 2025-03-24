@@ -193,8 +193,13 @@ C = np.array([[1,0]])
 x = np.array([[dist_array[0]],[0]])
                     </code></pre>
                     <p>The final component necessary for the Kalman Filter to function effectively is the selection of the process noise and sensor noise covariance matrices. The formulas for these, as well as the value of σ_3, were obtained from slide 16 of Lecture 14. </p>
-                    <img src="sigma1.png" alt="Sigma 1 in mm and s" class="lab-image">
-                    <img src="sigma2.png" alt="Sigma 2 in mm and s" class="lab-image">
+                    \[
+                    \sigma_1 = \sqrt{(10 \, \text{mm})^2 \times \left(\frac{1}{0.09364706}\right)} = 32.678 \, \text{mm}
+                    \]
+                    <br>
+                    \[
+                    \sigma_2 = \sqrt{(10 \, \text{mm/s})^2 \times \left(\frac{1}{0.09364706}\right)} = 32.678 \, \text{mm/s}
+                    \]
                     
 <!--                     this is the sum -->
                     <p>Σ<sub>u</sub> = \(\begin{pmatrix} \sigma_1^2 & 0 \\ 0 & \sigma_2^2 \end{pmatrix}\) = \(\begin{pmatrix} (32.678 mm)^2 & 0 \\ 0 & (32.678 mm/s)^2 \end{pmatrix}\)</p>
