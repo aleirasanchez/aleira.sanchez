@@ -131,7 +131,21 @@
                       </mrow>
                     </math>
                     <p>To discretize the matrices, I found that the sampling time is 0.0936 secs. Then, I did the following in Python to find A_d and B_d:</p>
-                    <img src="python_AdBd.png" alt="Ad & Bd calculations in mm/s" class="lab-image">
+<!--                     <img src="python_AdBd.png" alt="Ad & Bd calculations in mm/s" class="lab-image"> -->
+                    <pre><code>
+dt = []; summ = 0
+
+A = np.array([[0,1],[0,-d/m]])
+B = np.array([[0],[1/m]])
+
+for i in range(0,len(time)-1):
+    dt = time[i+1] - time[i]
+    summ = summ + dt
+Delta_T = summ/len(time)
+
+Ad = np.eye(2) + (Delta_T * A)
+Bd = B * Delta_T 
+                    </code></pre>
                     <p>Where I got these values for Ad and Bd:</p>
                     <math>
                       <mrow>
@@ -170,7 +184,8 @@
                         <mo>]</mo>
                       </mrow>
                     </math>
-
+                    <p>To identify the C matrix and initialize the state vector, given that the positive distance from the wall was measured, I used this code in Python:</p>
+                    
                   
                     <h3>IMPLEMENT KALMAN FILTER IN JUPYTER:</h3>
                     <p>...</p>
