@@ -224,7 +224,15 @@ x = np.array([[dist_array[0]],[0]])
                     <img src="sig3is10.png" alt="sig 3 is 20 plot" class="lab-image">
                     
                     <h3>IMPLEMENT KALMAN FILTER ON THE ROBOT:</h3>
-                    <p>...</p>
+                    <p>To implement the Kalman Filter on the robot I used my old code from Lab 5 which can be found here:</p>
+                    <p><a href="finalLab5code.png" target="_blank">Lab 5 code</a></p>
+                    <p>And I added a kf() function to apply the Kalman Filter to each collected data point. </p>
+                    <img src="kf_arduino.png" alt="kf arduino function" class="lab-image">
+                    <p>This function then replaced the linear interpolation in my loop() in Lab 5's code: </p>
+                    <img src="kf_inLoop.png" alt="kf function in loop" class="lab-image">
+                    <p>I later, ran my code and got this output: </p>
+                    <img src="tof&kf_trial1.png" alt=distance vs time trial 1" class="lab-image">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/UnnmnfN94ug?si=Fu9h1lhu1khOToEC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   
                     <h3>REFERENCES:</h3>
                     <p>For this lab I referenced, Stephan Wagner's and Mikayla Lahr's labs from previous years. I also used ChatGPT to help with the grammar.</p>
