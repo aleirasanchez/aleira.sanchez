@@ -46,18 +46,49 @@
             <section id="lab8">
                 <div class="lab-text">
                     <h1>Lab 8: Stunts!</h1>
-                    <h2>TASK A: </h2>
-                    <h3>BLA BLA:</h3>
-                    <p>...</p>
+                    <h2>TASK A: FLIP</h2>
+                    <h3>UNDERSTANDING THE TASK:</h3>
+                    <p>The goal of this lab is to start the car on a line about 4 meters away from the wall, have it drive at full speed toward the wall until it reaches the sticky mat, then immediately reverse at full speed. The sudden change in direction should trigger the flip. After the flip, the car returns to the starting line. </p>
+                    
+                    <h3>GETTING STARTED:</h3>
+                    <p>To get started with this lab, I taped two 9V batteries to the front of my car to shift its center of mass forward. This helps the car generate more rotational momentum when it hits the mat, increasing the chances that it will successfully flip. </p>
+
 <!--                     <img src="drag&m_INmm.png" alt="Drag & momentum calculations in mm/s" class="lab-image">  PICTURE FORMAT-->
 <!--                     <p><a href="steadySpeedCase.png" target="_blank">STEADY_SPEED Command</a></p> PICTURE LINK FORMAT-->
 
                   
-                    <h3>BLA BLA:</h3>
-                    <p>... </p>
-              
-<!--                     <pre><code>
-                    </code></pre> -->
+                    <h3>IMPLEMENTING THE CODE:</h3>
+                    <p>I followed a very similar strategy to that of my Lab 5 with the PID control. I did two case commands that would control the <code>flippity</code> flag I created. The second case command will also send the data after switching the flag.</p>
+                    <img src="flippityCase.png" alt="Flippity Case Command" class="lab-image"> 
+                    <p>With that I then made a <code>vinFlipDiesel()</code> function that would make my car go at full speed towards the wall until it reaches 1200mm from the wall (this is just guess value to start off). I would then run full speed backwards to the starting line. This function was then called inside my <code>loop()</code> funciton.</p>
+                    <img src="vinFlipDiesel.png" alt="VinFlipDiesel Function" class="lab-image"> 
+                    <p>Here is my loop() function:</p>
+                    <pre><code>
+void loop() {
+  BLEDevice central = BLE.central();
+
+  if (central) {
+    Serial.print("Connected to: ");
+    Serial.println(central.address());
+
+    while (central.connected()) {
+      write_data();
+      read_data();
+
+      if (flippity){
+        TOFSensor1.startRanging();
+        vinFlipDiesel();
+      }
+      else {
+        motors.stop();
+      }
+    } 
+
+    Serial.println("Disconnected");
+    motors.stop();
+  }
+}         
+                    </code></pre>
 
                     <h3>BLA BLA:</h3>
                     <p>...</p>
@@ -66,7 +97,7 @@
                     <p>...</p>
                      
                     <h3>REFERENCES:</h3>
-                    <p>For this lab I referenced, Stephan Wagner's and Mikayla Lahr's labs from previous years. I also used ChatGPT to help with the grammar.</p>
+                    <p>For this lab I used a week extension and referenced, Sarah Brown's page. I also used ChatGPT to help with the grammar.</p>
             </section>
         </div>
     </section>
