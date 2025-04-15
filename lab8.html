@@ -90,11 +90,63 @@ void loop() {
 }         
                     </code></pre>
 
-                    <h3>BLA BLA:</h3>
-                    <p>...</p>
+                    <h3>DEBUGGING:</h3>
+                    <p>I ran into quite a few issues when testing my code. Here's a quick summary of the problems from the unsuccessful runs:</p>
+                    <ol>
+                      <li>The PWM value for my motors was too low, so the car didn’t move fast enough.</li>
+                      <li>My JST cable broke—twice.</li>
+                      <li>The limit distance from the wall was too large, which affected timing.</li>
+                      <li>The car wouldn't gain enough speed to flip.</li>
+                    </ol>
+                    <p>To fix things, I adjusted the code and eventually increased the wall limit distance back to 1000 to give the car more room to build momentum.</p>
+                    <p>This is the updated <code>vinFlipDiesel()</code> function:</p>
+                    <pre><code>
+void vinFlipDiesel(){
+  bool triggered = false;
+  float start = millis();
+  
+  while (true){
+    if (TOFSensor1.checkForDataReady()){
+      distance1 = TOFSensor1.getDistance();
+      time_array[idx] = (millis() - start)/1000; //secs
+      distance_array1[idx] = distance1 ; //mm
+
+      motors.straightforward(250,0); 
+      TOFSensor1.clearInterrupt();
+      idx++;
+      if (distance1 <= 1000) break;
+    }
+  }
+  motors.straightbackward(250,0);
+  time_array[idx] = (millis() - start)/1000; //secs
+  delay(1000);
+
+  motors.stop();
+  idx++;
+
+  TOFSensor1.stopRanging();
+} 
+                    </code></pre>
                     
-                    <h3>BLA BLA:</h3>
-                    <p>...</p>
+                    <p>After multiple runs and hours of debugging and soldering I was able to get my first successful flip:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/44KaZu6bcgI?si=Vlpq6Mp1T78cByjE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <img src="1stFlipnotStraight.png" alt="1st Flip not Straight" class="lab-image"> 
+                    
+                    <p>From this trial, I decided to add back the calibration factor I had previously removed so the car could go in a straight line. I also increased the factor to 1.8 because the path was still angled. I duct-taped the wheels to make it easier for the car to flip and I got the first fully successful run at 240 pwm.</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5DQlt3SUoVQ?si=hRpDERpBMxyAGgTO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <img src="1stFlipStraight.png" alt="1st Flip Straight" class="lab-image"> 
+                    
+                    <p>Here are the other two successful runs:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/SAwa2VzuW7Y?si=UWmzfrdFqcqCSYMZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>>
+                    <img src="2ndFlipStraight.png" alt="2nd Flip Straight" class="lab-image"> 
+                    <br>
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/KHsBplcC-40?si=CgpCINvP0WQqPELE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <img src="3rdFlipStraightish.png" alt="3rd Flip Straight" class="lab-image">
+                    
+                    <h3>BLOOPERS:</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/i82R9ixNH3k?si=0ph61vgHrH3HxvBG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/nilDwIJ3hFQ?si=3XK_Q72MGnl3dqSJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                      
                     <h3>REFERENCES:</h3>
                     <p>For this lab I used a week extension and referenced Sarah Brown's page. I also used ChatGPT to help with the grammar.</p>
