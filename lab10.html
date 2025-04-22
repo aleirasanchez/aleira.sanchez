@@ -66,7 +66,9 @@
                     <img src="odomMotionModel.png" alt="Odom Motion Model" class="lab-image">
                     
                     <h3>PREDICTION STEP:</h3>
-                    <p>...</p>
+                    <p>The prediction_step() function calculates the probability that the robot is in each cell of the grid. It does this by taking the current and previous poses and iterating through the entire grid to compute a predicted belief using the odom_motion_model() function.</p>
+                    <p> To reduce computational load, the function skips calculations for cells where the probability drops below 0.0001, since the likelihood of the robot being in those cells is very low. While this speeds up the process, it can slightly reduce the precision and accuracy of the filter.</p>
+                    <img src="predictionStep.png" alt="Prediction step" class="lab-image">
                     
                     <h3>SENSOR MODEL:</h3>
                     <p>...</p>
