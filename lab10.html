@@ -53,12 +53,13 @@
                     <img src="prelab10.png" alt="Prelab lab 10" class="lab-image">
                     <p>Analyzing the odometry plot (the red dots) it does not look accurate at all. However, the ground truth plot (green dots) seem accurate with just a few undershooting angles in a few turns.</p>
                     <h2>TASKS: </h2>
-                    <p>The following function were written to run the Bayes Filter</p>
+                    <p>The following function were written to run the Bayes Filter.</p>
+                    
                     <h3>COMPUTE CONTROL:</h3>
-                    <p>...</p>
-<!--                     <img src="drag&m_INmm.png" alt="Drag & momentum calculations in mm/s" class="lab-image">  PICTURE FORMAT-->
-<!--                     <p><a href="steadySpeedCase.png" target="_blank">STEADY_SPEED Command</a></p> PICTURE LINK FORMAT-->
-
+                    <p>The compute_control() function calculates the first rotation, translation, and second rotation by using the robot’s current pose and previous pose as inputs. The equations used for these calculations are shown below (from Lecture 18). </p>
+                    <img src="computeControlEqns.png" alt="Eqxns compute control" class="lab-image">
+                    <p>To simplify the equations in Pyhton, I created a variable called x_component to store the difference between the x-coordinates of the current and previous poses. I did the same for the y-coordinates.</p>
+                    <img src="computeControl.png" alt="Compute control" class="lab-image">
                   
                     <h3>ODOMETRY MOTION MODEL: </h3>
                     <p>... </p>
