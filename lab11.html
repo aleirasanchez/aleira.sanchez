@@ -74,8 +74,20 @@
                     <img src="initial command cases called.png" alt="command cases" class="lab-image">
                     
                     <h3>RUN ROBOT LOCALIZATION:</h3>
-                    <p>...</p>
-                     
+                    <p>For the next task, I had to run my code twice for each of the poses marked on the lab setup. These poses are: (-3ft, -2ft, 0 deg), (0ft, 3ft, 0 deg), (5ft, -3ft, 0 deg), and (5ft, 3ft, 0 deg). I ran the code 3-4 times for each pose and I got the same two coordinates for all of them. I tried changing initial orientation at each pose and did 0, 90, 180 and -90 degrees for each pose and at the bottom left pose I even did like an angle between -90 and 180 to see if its any better and still no improvement. The sensor_readings and sensor_ranges arrays both have pretty accurate values for distances and yaw measurements however the coordinates for the belief and the ground truth were always one of these two:</p>
+                    <img src="topRight_run1_data.png" alt="top right run 1" class="lab-image">
+                    <img src="topRight_run2_data.png" alt="top right run 2" class="lab-image">
+                    <img src="bottom right_run2_data.png" alt="bottom right run 2" class="lab-image">
+                    <p>First two pictures are runs at different orientations of the same pose (5ft, 3ft) and the second one is the second run of the bottom right pose, (5ft, - 3ft,) since the first run gave me the exact same values while in a different initial orientation. My results for the left points, both upper and lower, alternated between those two coordinates no matter the orientation I tried. At once I tried going clockwise instead of counter-clockwise but that made my robot spin nonstop so I returned it to counter-clockwise.</p>
+                    <p>Here are the belief (blue) and ground truth(green) plots of the 1st run on the top right pose,(5ft, 3ft). </p>
+                    <table>
+                        <tr>
+                            <td><img src="topRight_run1_belief.png" alt="top right belief 1" width="300"></td>
+                            <td><img src="topRight_run1_GT.png" alt="top right ground truth 1" width="300"></td>
+                        </tr>
+                    </table>
+                    <p>I'm still unsure as to why this is happening. The TA after office hours were over gave me a few suggestions as what to try next. One was to try changing the sensor noise on the code and see if the belief improves and/or try adding more TOF sensor measurements after each angle increase and then averaging out the values. I will try these suggestions tomorrow in lab and see if I can get better readings or just readings that are not inside the box.</p>
+                    
                     <h3>REFERENCES:</h3>
                     <p>For this lab I referenced, Stephan Wagner's and Mikayla Lahr's labs from previous years. I also used ChatGPT to help with the grammar.</p>
             </section>
