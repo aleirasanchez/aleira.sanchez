@@ -61,13 +61,17 @@
                     <p>Here is my Lab 9 code. First is the ORIENTATION_CONTROL command and then there is the BLE connected while loop:</p>
                     <p><a href="orient360turnCase.png" target="_blank">ORIENTATION_CONTROL Command</a></p>
                     <p><a href="BLEconnected loop.png" target="_blank">BLE While Loop</a></p>
-
+                    <p>And here is a video of my robot doing the 360 turn:</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/1QNpkMAeTVc?si=XvfJxGKYaSzzPzvK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               
 <!--                     <pre><code>
                     </code></pre> -->
 
                     <h3>PERFORM_OBSERVATION_LOOP:</h3>
-                    <p>...</p>
+                    <p>The perform_observation_loop function is designed to collect 18 observations during a full 360-degree rotation and store them in the sensor_ranges and sensor_bearings arrays. These arrays will later be used in the update step to populate the obs_range_data member variable. In my function, I first initialize the arrays that will later hold the distance and angle measurements. Then, I call my command cases to stop orientation control and send the collected data to the computer. I continue calling the asyncio function until 18 readings are collected (corresponding to a full rotation), and then I stop the notification handler. In the final steps of the function, I iterate over the collected readings and convert the lists into NumPy column arrays.</p>
+                    <img src="perform_observation_loop.png" alt="perform_oservation_loop function" class="lab-image">
+                    <p>This function is then called in the "Run an update step of the Bayes Filter" section of the lab11_real.ipynb notebook. However, before running that cell I call a few commands and initialize my arrays that will collect my data.</p>
+                    <img src="initial command cases called.png" alt="command cases" class="lab-image">
                     
                     <h3>RUN ROBOT LOCALIZATION:</h3>
                     <p>...</p>
