@@ -80,10 +80,14 @@
                     <p>I then converted the polar measurements, relative to the car, to the inertial reference frame of the lab room. I used the transformation matrix:</p>
                     <p>
                     \[
-                    x = r \cdot \cos(\theta)
-                    \]  
-                    \[
-                    y = r \cdot \sin(\theta)
+                    \begin{bmatrix}
+                    x \\ y
+                    \end{bmatrix}
+                    =
+                    r
+                    \begin{bmatrix}
+                    \cos(\theta) \\ \sin(\theta)
+                    \end{bmatrix}
                     \]
                     </p>
                     <p>I plotted all the four coordinates' first run in the same plot. I also added the lab set up's walls to the plot to observe how precise tho ToF sensor actually is. The effect of the robot moving out of its original spot can be seen mostly on the readings from the top right coordinate (5,3).</p>
